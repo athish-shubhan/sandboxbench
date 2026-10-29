@@ -1,0 +1,33 @@
+2026/10/29 00:55:11 == isolation
+2026/10/29 00:55:18    isolation done in 7s
+2026/10/29 00:55:18 == coldstart
+2026/10/29 00:55:43    coldstart 10/40
+2026/10/29 00:56:07    coldstart 20/40
+2026/10/29 00:56:30    coldstart 30/40
+2026/10/29 00:56:54    coldstart 40/40
+2026/10/29 00:56:54    coldstart done in 95s
+2026/10/29 00:56:54 == exec
+2026/10/29 00:57:09    exec done in 16s
+2026/10/29 00:57:09 == memory
+2026/10/29 00:57:16    runc: {N:16 MemAvailDeltaMiB:-0.5654296875 PssMiB:0 Procs:0 Per64GiB:0}
+2026/10/29 00:57:55    runsc: {N:16 MemAvailDeltaMiB:12.96923828125 PssMiB:13.06085205078125 Procs:5 Per64GiB:5017.743080251788}
+2026/10/29 00:57:55    memory done in 46s
+2026/10/29 00:57:55 == workloads
+2026/10/29 00:59:03    git_clone done
+2026/10/29 01:02:09    pip_install done
+2026/10/29 01:05:41    pytest done
+2026/10/29 01:08:21    compile_c done
+2026/10/29 01:09:45    python_imports done
+2026/10/29 01:10:45    getpid done
+2026/10/29 01:11:11    stat_work done
+2026/10/29 01:11:31    stat_tmp done
+2026/10/29 01:11:56    openclose_work done
+2026/10/29 01:12:51    forkexec done
+2026/10/29 01:14:10    pipe_rtt done
+2026/10/29 01:14:40    write_work done
+2026/10/29 01:15:10    read_work done
+2026/10/29 01:15:10    workloads done in 1035s
+
+real	19m58.520s
+user	5m42.738s
+sys	2m1.004s

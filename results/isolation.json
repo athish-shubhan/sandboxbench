@@ -1,0 +1,54 @@
+{
+  "elapsed_sec": 6.86019549,
+  "env": {
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+    "date": "2026-10-28T13:55:18Z",
+    "kernel": "6.18.44-fc-v180",
+    "kvm": false,
+    "mem_total_gib": 7.839439392089844,
+    "runc": "runc version 1.5.2",
+    "runsc": "runsc version VERSION_MISSING",
+    "runsc_flags": [
+      "--platform=systrap",
+      "--network=none"
+    ],
+    "vcpus": 2
+  },
+  "experiment": "isolation",
+  "result": {
+    "runc": {
+      "allocate_512MiB_with_256MiB_limit": "process killed (exit -9), sandbox survived",
+      "cap_eff": "00000000a80405fb",
+      "cloud_metadata_169.254.169.254": "unreachable (Network is unreachable)",
+      "dns_lookup": "fails (gaierror)",
+      "kernel_seen": "6.18.44-fc-v180",
+      "mount_tmpfs": "denied",
+      "network_interfaces": [
+        "lo"
+      ],
+      "no_new_privs": "1",
+      "pids_visible": 2,
+      "processes_started_of_200_with_pids_limit_64": 62,
+      "seccomp_mode": "2",
+      "unshare_user_ns": "denied",
+      "write_to_root": "denied (Read-only file system)"
+    },
+    "runsc": {
+      "allocate_512MiB_with_256MiB_limit": "SANDBOX TERMINATED (exec exit 128: waiting on pid 2: waiting on PID 2 in sandbox \"sb-runsc-9813-3\": urpc method \"containerManager.WaitPID\" failed: EOF)",
+      "cap_eff": "00000000a80405fb",
+      "cloud_metadata_169.254.169.254": "unreachable (Network is unreachable)",
+      "dns_lookup": "fails (gaierror)",
+      "kernel_seen": "4.4.0",
+      "mount_tmpfs": "denied",
+      "network_interfaces": [
+        "lo"
+      ],
+      "no_new_privs": "absent",
+      "pids_visible": 2,
+      "processes_started_of_200_with_pids_limit_64": "SANDBOX TERMINATED (exec exit 128: waiting on pid 15: waiting on PID 15 in sandbox \"sb-runsc-9813-2\": urpc method \"containerManager.WaitPID\" failed: EOF)",
+      "seccomp_mode": "0",
+      "unshare_user_ns": "ALLOWED",
+      "write_to_root": "denied (Read-only file system)"
+    }
+  }
+}

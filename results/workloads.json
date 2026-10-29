@@ -1,0 +1,3380 @@
+{
+  "elapsed_sec": 1034.556394571,
+  "env": {
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+    "date": "2026-10-28T14:15:10Z",
+    "kernel": "6.18.44-fc-v180",
+    "kvm": false,
+    "mem_total_gib": 7.839439392089844,
+    "runc": "runc version 1.5.2",
+    "runsc": "runsc version VERSION_MISSING",
+    "runsc_flags": [
+      "--platform=systrap",
+      "--network=none"
+    ],
+    "vcpus": 2
+  },
+  "experiment": "workloads",
+  "result": {
+    "samples": [
+      {
+        "arm": "runc",
+        "task": "git_clone",
+        "rep": 0,
+        "wall_sec": 1.352454649,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "git_clone",
+        "rep": 0,
+        "wall_sec": 1.233150698,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runsc",
+        "task": "git_clone",
+        "rep": 0,
+        "wall_sec": 3.407456667,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "git_clone",
+        "rep": 1,
+        "wall_sec": 1.205716782,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runsc",
+        "task": "git_clone",
+        "rep": 1,
+        "wall_sec": 3.326938769,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc",
+        "task": "git_clone",
+        "rep": 1,
+        "wall_sec": 1.393713848,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runsc",
+        "task": "git_clone",
+        "rep": 2,
+        "wall_sec": 3.402804651,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc",
+        "task": "git_clone",
+        "rep": 2,
+        "wall_sec": 1.306914846,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "git_clone",
+        "rep": 2,
+        "wall_sec": 1.278034621,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc",
+        "task": "git_clone",
+        "rep": 3,
+        "wall_sec": 1.382251481,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "git_clone",
+        "rep": 3,
+        "wall_sec": 1.267868269,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runsc",
+        "task": "git_clone",
+        "rep": 3,
+        "wall_sec": 3.354443944,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "git_clone",
+        "rep": 4,
+        "wall_sec": 1.261881226,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runsc",
+        "task": "git_clone",
+        "rep": 4,
+        "wall_sec": 3.533909747,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc",
+        "task": "git_clone",
+        "rep": 4,
+        "wall_sec": 1.329149791,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runsc",
+        "task": "git_clone",
+        "rep": 5,
+        "wall_sec": 3.602150885,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc",
+        "task": "git_clone",
+        "rep": 5,
+        "wall_sec": 1.395383246,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "git_clone",
+        "rep": 5,
+        "wall_sec": 1.469210684,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc",
+        "task": "git_clone",
+        "rep": 6,
+        "wall_sec": 1.404505621,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "git_clone",
+        "rep": 6,
+        "wall_sec": 1.456697057,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runsc",
+        "task": "git_clone",
+        "rep": 6,
+        "wall_sec": 3.668591084,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "git_clone",
+        "rep": 7,
+        "wall_sec": 1.379938904,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runsc",
+        "task": "git_clone",
+        "rep": 7,
+        "wall_sec": 3.69842984,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc",
+        "task": "git_clone",
+        "rep": 7,
+        "wall_sec": 1.441952458,
+        "exit_code": 0,
+        "output_tail": "5375"
+      },
+      {
+        "arm": "runc",
+        "task": "pip_install",
+        "rep": 0,
+        "wall_sec": 4.872746926,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pip_install",
+        "rep": 0,
+        "wall_sec": 5.59333273,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "pip_install",
+        "rep": 0,
+        "wall_sec": 9.330466397,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pip_install",
+        "rep": 1,
+        "wall_sec": 5.281845487,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "pip_install",
+        "rep": 1,
+        "wall_sec": 9.774558461,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "pip_install",
+        "rep": 1,
+        "wall_sec": 5.563505016,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "pip_install",
+        "rep": 2,
+        "wall_sec": 9.124225424,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "pip_install",
+        "rep": 2,
+        "wall_sec": 5.45058627,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pip_install",
+        "rep": 2,
+        "wall_sec": 5.370958008,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "pip_install",
+        "rep": 3,
+        "wall_sec": 5.984823304,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pip_install",
+        "rep": 3,
+        "wall_sec": 5.483945353,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "pip_install",
+        "rep": 3,
+        "wall_sec": 9.719993111,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pip_install",
+        "rep": 4,
+        "wall_sec": 5.591773811,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "pip_install",
+        "rep": 4,
+        "wall_sec": 10.284718482,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "pip_install",
+        "rep": 4,
+        "wall_sec": 5.676974034,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "pip_install",
+        "rep": 5,
+        "wall_sec": 9.866891227,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "pip_install",
+        "rep": 5,
+        "wall_sec": 5.134517716,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pip_install",
+        "rep": 5,
+        "wall_sec": 5.830992976,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "pip_install",
+        "rep": 6,
+        "wall_sec": 5.452504177,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pip_install",
+        "rep": 6,
+        "wall_sec": 5.910215668,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "pip_install",
+        "rep": 6,
+        "wall_sec": 10.837968469,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pip_install",
+        "rep": 7,
+        "wall_sec": 5.541582734,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "pip_install",
+        "rep": 7,
+        "wall_sec": 9.331204483,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "pip_install",
+        "rep": 7,
+        "wall_sec": 5.389215188,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "pytest",
+        "rep": 0,
+        "wall_sec": 3.033915623,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.38s"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pytest",
+        "rep": 0,
+        "wall_sec": 3.046008554,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.38s"
+      },
+      {
+        "arm": "runsc",
+        "task": "pytest",
+        "rep": 0,
+        "wall_sec": 4.018800848,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 3.13s"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pytest",
+        "rep": 1,
+        "wall_sec": 2.768261355,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.23s"
+      },
+      {
+        "arm": "runsc",
+        "task": "pytest",
+        "rep": 1,
+        "wall_sec": 3.964704489,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 3.08s"
+      },
+      {
+        "arm": "runc",
+        "task": "pytest",
+        "rep": 1,
+        "wall_sec": 2.924015378,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.39s"
+      },
+      {
+        "arm": "runsc",
+        "task": "pytest",
+        "rep": 2,
+        "wall_sec": 4.116264094,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 3.17s"
+      },
+      {
+        "arm": "runc",
+        "task": "pytest",
+        "rep": 2,
+        "wall_sec": 2.942782587,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.44s"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pytest",
+        "rep": 2,
+        "wall_sec": 2.946335702,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.37s"
+      },
+      {
+        "arm": "runc",
+        "task": "pytest",
+        "rep": 3,
+        "wall_sec": 2.785656966,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.27s"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pytest",
+        "rep": 3,
+        "wall_sec": 2.966397394,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.32s"
+      },
+      {
+        "arm": "runsc",
+        "task": "pytest",
+        "rep": 3,
+        "wall_sec": 4.148304047,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 3.24s"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pytest",
+        "rep": 4,
+        "wall_sec": 2.762274589,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.24s"
+      },
+      {
+        "arm": "runsc",
+        "task": "pytest",
+        "rep": 4,
+        "wall_sec": 3.985290853,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 3.06s"
+      },
+      {
+        "arm": "runc",
+        "task": "pytest",
+        "rep": 4,
+        "wall_sec": 2.878183984,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.35s"
+      },
+      {
+        "arm": "runsc",
+        "task": "pytest",
+        "rep": 5,
+        "wall_sec": 4.057730857,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 3.20s"
+      },
+      {
+        "arm": "runc",
+        "task": "pytest",
+        "rep": 5,
+        "wall_sec": 3.255715435,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.57s"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pytest",
+        "rep": 5,
+        "wall_sec": 2.94613103,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.40s"
+      },
+      {
+        "arm": "runc",
+        "task": "pytest",
+        "rep": 6,
+        "wall_sec": 3.000785782,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.41s"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pytest",
+        "rep": 6,
+        "wall_sec": 3.000810809,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.42s"
+      },
+      {
+        "arm": "runsc",
+        "task": "pytest",
+        "rep": 6,
+        "wall_sec": 4.31369946,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 3.25s"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pytest",
+        "rep": 7,
+        "wall_sec": 2.980875228,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.38s"
+      },
+      {
+        "arm": "runsc",
+        "task": "pytest",
+        "rep": 7,
+        "wall_sec": 4.048407363,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 3.10s"
+      },
+      {
+        "arm": "runc",
+        "task": "pytest",
+        "rep": 7,
+        "wall_sec": 2.798099585,
+        "exit_code": 0,
+        "output_tail": "663 passed, 1 skipped, 8 warnings in 2.25s"
+      },
+      {
+        "arm": "runc",
+        "task": "compile_c",
+        "rep": 0,
+        "wall_sec": 3.748688598,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "compile_c",
+        "rep": 0,
+        "wall_sec": 4.123712826,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runsc",
+        "task": "compile_c",
+        "rep": 0,
+        "wall_sec": 9.395073736,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "compile_c",
+        "rep": 1,
+        "wall_sec": 3.870361632,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runsc",
+        "task": "compile_c",
+        "rep": 1,
+        "wall_sec": 9.529787883000001,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc",
+        "task": "compile_c",
+        "rep": 1,
+        "wall_sec": 4.038612969,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runsc",
+        "task": "compile_c",
+        "rep": 2,
+        "wall_sec": 9.753333598,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc",
+        "task": "compile_c",
+        "rep": 2,
+        "wall_sec": 3.731943657,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "compile_c",
+        "rep": 2,
+        "wall_sec": 4.049553079,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc",
+        "task": "compile_c",
+        "rep": 3,
+        "wall_sec": 4.06010992,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "compile_c",
+        "rep": 3,
+        "wall_sec": 4.153875384,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runsc",
+        "task": "compile_c",
+        "rep": 3,
+        "wall_sec": 10.409329308,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "compile_c",
+        "rep": 4,
+        "wall_sec": 4.001590493,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runsc",
+        "task": "compile_c",
+        "rep": 4,
+        "wall_sec": 9.874370909,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc",
+        "task": "compile_c",
+        "rep": 4,
+        "wall_sec": 3.862864642,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runsc",
+        "task": "compile_c",
+        "rep": 5,
+        "wall_sec": 9.826232165,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc",
+        "task": "compile_c",
+        "rep": 5,
+        "wall_sec": 3.764187087,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "compile_c",
+        "rep": 5,
+        "wall_sec": 3.798930277,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc",
+        "task": "compile_c",
+        "rep": 6,
+        "wall_sec": 3.832633928,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "compile_c",
+        "rep": 6,
+        "wall_sec": 4.202714291,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runsc",
+        "task": "compile_c",
+        "rep": 6,
+        "wall_sec": 9.271477396,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "compile_c",
+        "rep": 7,
+        "wall_sec": 3.753093335,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runsc",
+        "task": "compile_c",
+        "rep": 7,
+        "wall_sec": 9.594819232,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc",
+        "task": "compile_c",
+        "rep": 7,
+        "wall_sec": 3.520724242,
+        "exit_code": 0,
+        "output_tail": "Lua 5.4.7  Copyright (C) 1994-2024 Lua.org, PUC-Rio"
+      },
+      {
+        "arm": "runc",
+        "task": "python_imports",
+        "rep": 0,
+        "wall_sec": 2.066559965,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "python_imports",
+        "rep": 0,
+        "wall_sec": 1.9844282359999998,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "python_imports",
+        "rep": 0,
+        "wall_sec": 4.179577502,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "python_imports",
+        "rep": 1,
+        "wall_sec": 2.038041807,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "python_imports",
+        "rep": 1,
+        "wall_sec": 4.281868233,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "python_imports",
+        "rep": 1,
+        "wall_sec": 2.25413048,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "python_imports",
+        "rep": 2,
+        "wall_sec": 4.022915155,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "python_imports",
+        "rep": 2,
+        "wall_sec": 2.111690978,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "python_imports",
+        "rep": 2,
+        "wall_sec": 2.142201698,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "python_imports",
+        "rep": 3,
+        "wall_sec": 2.204508479,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "python_imports",
+        "rep": 3,
+        "wall_sec": 2.086429797,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "python_imports",
+        "rep": 3,
+        "wall_sec": 4.030872441,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "python_imports",
+        "rep": 4,
+        "wall_sec": 2.077711084,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "python_imports",
+        "rep": 4,
+        "wall_sec": 4.309277168,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "python_imports",
+        "rep": 4,
+        "wall_sec": 2.402639441,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "python_imports",
+        "rep": 5,
+        "wall_sec": 4.410367025,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "python_imports",
+        "rep": 5,
+        "wall_sec": 2.045596067,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "python_imports",
+        "rep": 5,
+        "wall_sec": 2.232509844,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "python_imports",
+        "rep": 6,
+        "wall_sec": 2.087442218,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "python_imports",
+        "rep": 6,
+        "wall_sec": 2.171655281,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "python_imports",
+        "rep": 6,
+        "wall_sec": 4.537353661,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc-aa",
+        "task": "python_imports",
+        "rep": 7,
+        "wall_sec": 2.171245698,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runsc",
+        "task": "python_imports",
+        "rep": 7,
+        "wall_sec": 4.448217582,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "python_imports",
+        "rep": 7,
+        "wall_sec": 2.4432773389999998,
+        "exit_code": 0,
+        "output_tail": ""
+      },
+      {
+        "arm": "runc",
+        "task": "getpid",
+        "rep": 0,
+        "wall_sec": 0.128741932,
+        "ns_per_op": 107.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":107.4}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "getpid",
+        "rep": 0,
+        "wall_sec": 0.171093863,
+        "ns_per_op": 145.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":145.1}"
+      },
+      {
+        "arm": "runsc",
+        "task": "getpid",
+        "rep": 0,
+        "wall_sec": 5.230520801,
+        "ns_per_op": 5171.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":5171.6}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "getpid",
+        "rep": 1,
+        "wall_sec": 0.145004402,
+        "ns_per_op": 111.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":111.3}"
+      },
+      {
+        "arm": "runsc",
+        "task": "getpid",
+        "rep": 1,
+        "wall_sec": 4.742128771,
+        "ns_per_op": 4670.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":4670.2}"
+      },
+      {
+        "arm": "runc",
+        "task": "getpid",
+        "rep": 1,
+        "wall_sec": 0.204798865,
+        "ns_per_op": 171.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":171.4}"
+      },
+      {
+        "arm": "runsc",
+        "task": "getpid",
+        "rep": 2,
+        "wall_sec": 5.069583389,
+        "ns_per_op": 4994.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":4994.2}"
+      },
+      {
+        "arm": "runc",
+        "task": "getpid",
+        "rep": 2,
+        "wall_sec": 0.165759719,
+        "ns_per_op": 132.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":132.4}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "getpid",
+        "rep": 2,
+        "wall_sec": 0.180094382,
+        "ns_per_op": 146.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":146.1}"
+      },
+      {
+        "arm": "runc",
+        "task": "getpid",
+        "rep": 3,
+        "wall_sec": 0.225843484,
+        "ns_per_op": 193.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":193.4}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "getpid",
+        "rep": 3,
+        "wall_sec": 0.168824796,
+        "ns_per_op": 134.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":134.5}"
+      },
+      {
+        "arm": "runsc",
+        "task": "getpid",
+        "rep": 3,
+        "wall_sec": 5.521544524,
+        "ns_per_op": 5439.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":5439.3}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "getpid",
+        "rep": 4,
+        "wall_sec": 0.14061261,
+        "ns_per_op": 115.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":115.5}"
+      },
+      {
+        "arm": "runsc",
+        "task": "getpid",
+        "rep": 4,
+        "wall_sec": 4.711626365,
+        "ns_per_op": 4645.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":4645.6}"
+      },
+      {
+        "arm": "runc",
+        "task": "getpid",
+        "rep": 4,
+        "wall_sec": 0.130090064,
+        "ns_per_op": 110.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":110.1}"
+      },
+      {
+        "arm": "runsc",
+        "task": "getpid",
+        "rep": 5,
+        "wall_sec": 5.304381938,
+        "ns_per_op": 5226.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":5226.9}"
+      },
+      {
+        "arm": "runc",
+        "task": "getpid",
+        "rep": 5,
+        "wall_sec": 0.197158753,
+        "ns_per_op": 155.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":155.3}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "getpid",
+        "rep": 5,
+        "wall_sec": 0.139267057,
+        "ns_per_op": 113.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":113.8}"
+      },
+      {
+        "arm": "runc",
+        "task": "getpid",
+        "rep": 6,
+        "wall_sec": 0.181404251,
+        "ns_per_op": 139.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":139.5}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "getpid",
+        "rep": 6,
+        "wall_sec": 0.142653103,
+        "ns_per_op": 118.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":118.2}"
+      },
+      {
+        "arm": "runsc",
+        "task": "getpid",
+        "rep": 6,
+        "wall_sec": 4.961582046,
+        "ns_per_op": 4896.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":4896.6}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "getpid",
+        "rep": 7,
+        "wall_sec": 0.173753246,
+        "ns_per_op": 139,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":139.0}"
+      },
+      {
+        "arm": "runsc",
+        "task": "getpid",
+        "rep": 7,
+        "wall_sec": 5.184752434,
+        "ns_per_op": 5102.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":5102.5}"
+      },
+      {
+        "arm": "runc",
+        "task": "getpid",
+        "rep": 7,
+        "wall_sec": 0.199586875,
+        "ns_per_op": 151.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"getpid\",\"ops\":1000000,\"ns_per_op\":151.8}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_work",
+        "rep": 0,
+        "wall_sec": 0.094999197,
+        "ns_per_op": 565.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":565.1}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_work",
+        "rep": 0,
+        "wall_sec": 0.148937652,
+        "ns_per_op": 952.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":952.2}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_work",
+        "rep": 0,
+        "wall_sec": 0.666557987,
+        "ns_per_op": 6003.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":6003.4}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_work",
+        "rep": 1,
+        "wall_sec": 0.120179659,
+        "ns_per_op": 930,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":930.0}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_work",
+        "rep": 1,
+        "wall_sec": 0.831908552,
+        "ns_per_op": 7509.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":7509.2}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_work",
+        "rep": 1,
+        "wall_sec": 0.120483181,
+        "ns_per_op": 895,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":895.0}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_work",
+        "rep": 2,
+        "wall_sec": 0.964059754,
+        "ns_per_op": 8824.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":8824.8}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_work",
+        "rep": 2,
+        "wall_sec": 0.082677476,
+        "ns_per_op": 512.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":512.6}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_work",
+        "rep": 2,
+        "wall_sec": 0.089004662,
+        "ns_per_op": 536.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":536.3}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_work",
+        "rep": 3,
+        "wall_sec": 0.083943833,
+        "ns_per_op": 583.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":583.5}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_work",
+        "rep": 3,
+        "wall_sec": 0.118783991,
+        "ns_per_op": 996.7,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":996.7}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_work",
+        "rep": 3,
+        "wall_sec": 0.831307021,
+        "ns_per_op": 7489.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":7489.5}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_work",
+        "rep": 4,
+        "wall_sec": 0.093611551,
+        "ns_per_op": 545.7,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":545.7}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_work",
+        "rep": 4,
+        "wall_sec": 0.831578481,
+        "ns_per_op": 7465,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":7465.0}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_work",
+        "rep": 4,
+        "wall_sec": 0.080328787,
+        "ns_per_op": 563.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":563.9}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_work",
+        "rep": 5,
+        "wall_sec": 0.886219841,
+        "ns_per_op": 8238.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":8238.2}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_work",
+        "rep": 5,
+        "wall_sec": 0.106244549,
+        "ns_per_op": 713,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":713.0}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_work",
+        "rep": 5,
+        "wall_sec": 0.084904146,
+        "ns_per_op": 516.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":516.5}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_work",
+        "rep": 6,
+        "wall_sec": 0.113865674,
+        "ns_per_op": 885.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":885.9}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_work",
+        "rep": 6,
+        "wall_sec": 0.093177655,
+        "ns_per_op": 553.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":553.9}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_work",
+        "rep": 6,
+        "wall_sec": 0.910352793,
+        "ns_per_op": 8496.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":8496.3}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_work",
+        "rep": 7,
+        "wall_sec": 0.107152537,
+        "ns_per_op": 772,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":772.0}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_work",
+        "rep": 7,
+        "wall_sec": 0.904812318,
+        "ns_per_op": 8018.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":8018.4}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_work",
+        "rep": 7,
+        "wall_sec": 0.085069213,
+        "ns_per_op": 532.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":532.8}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_tmp",
+        "rep": 0,
+        "wall_sec": 0.110889081,
+        "ns_per_op": 705,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":705.0}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_tmp",
+        "rep": 0,
+        "wall_sec": 0.104568319,
+        "ns_per_op": 593.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":593.6}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_tmp",
+        "rep": 0,
+        "wall_sec": 0.508781524,
+        "ns_per_op": 4418.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":4418.2}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_tmp",
+        "rep": 1,
+        "wall_sec": 0.071844616,
+        "ns_per_op": 527.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":527.3}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_tmp",
+        "rep": 1,
+        "wall_sec": 0.415690633,
+        "ns_per_op": 3441.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":3441.9}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_tmp",
+        "rep": 1,
+        "wall_sec": 0.086591554,
+        "ns_per_op": 602.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":602.8}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_tmp",
+        "rep": 2,
+        "wall_sec": 0.344634745,
+        "ns_per_op": 2799.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":2799.6}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_tmp",
+        "rep": 2,
+        "wall_sec": 0.088763825,
+        "ns_per_op": 511.7,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":511.7}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_tmp",
+        "rep": 2,
+        "wall_sec": 0.079468952,
+        "ns_per_op": 583.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":583.5}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_tmp",
+        "rep": 3,
+        "wall_sec": 0.081026384,
+        "ns_per_op": 521.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":521.3}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_tmp",
+        "rep": 3,
+        "wall_sec": 0.086857119,
+        "ns_per_op": 555.7,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":555.7}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_tmp",
+        "rep": 3,
+        "wall_sec": 0.384473146,
+        "ns_per_op": 3194.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":3194.6}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_tmp",
+        "rep": 4,
+        "wall_sec": 0.11062876,
+        "ns_per_op": 736.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":736.3}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_tmp",
+        "rep": 4,
+        "wall_sec": 0.431084548,
+        "ns_per_op": 3663.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":3663.6}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_tmp",
+        "rep": 4,
+        "wall_sec": 0.098751269,
+        "ns_per_op": 567.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":567.8}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_tmp",
+        "rep": 5,
+        "wall_sec": 0.436136771,
+        "ns_per_op": 3684.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":3684.2}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_tmp",
+        "rep": 5,
+        "wall_sec": 0.074117116,
+        "ns_per_op": 528.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":528.2}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_tmp",
+        "rep": 5,
+        "wall_sec": 0.071248457,
+        "ns_per_op": 533.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":533.9}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_tmp",
+        "rep": 6,
+        "wall_sec": 0.07684559,
+        "ns_per_op": 539.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":539.4}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_tmp",
+        "rep": 6,
+        "wall_sec": 0.074125902,
+        "ns_per_op": 560,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":560.0}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_tmp",
+        "rep": 6,
+        "wall_sec": 0.511747593,
+        "ns_per_op": 4490.7,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":4490.7}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "stat_tmp",
+        "rep": 7,
+        "wall_sec": 0.07315301,
+        "ns_per_op": 523.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":523.2}"
+      },
+      {
+        "arm": "runsc",
+        "task": "stat_tmp",
+        "rep": 7,
+        "wall_sec": 0.513812878,
+        "ns_per_op": 4388.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":4388.5}"
+      },
+      {
+        "arm": "runc",
+        "task": "stat_tmp",
+        "rep": 7,
+        "wall_sec": 0.087318087,
+        "ns_per_op": 532,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"stat\",\"ops\":100000,\"ns_per_op\":532.0}"
+      },
+      {
+        "arm": "runc",
+        "task": "openclose_work",
+        "rep": 0,
+        "wall_sec": 0.087540638,
+        "ns_per_op": 1095.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1095.2}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "openclose_work",
+        "rep": 0,
+        "wall_sec": 0.088394578,
+        "ns_per_op": 1057.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1057.2}"
+      },
+      {
+        "arm": "runsc",
+        "task": "openclose_work",
+        "rep": 0,
+        "wall_sec": 0.66244622,
+        "ns_per_op": 11888.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":11888.1}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "openclose_work",
+        "rep": 1,
+        "wall_sec": 0.082903009,
+        "ns_per_op": 1014.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1014.4}"
+      },
+      {
+        "arm": "runsc",
+        "task": "openclose_work",
+        "rep": 1,
+        "wall_sec": 0.628978295,
+        "ns_per_op": 11211,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":11211.0}"
+      },
+      {
+        "arm": "runc",
+        "task": "openclose_work",
+        "rep": 1,
+        "wall_sec": 0.124183381,
+        "ns_per_op": 1809.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1809.2}"
+      },
+      {
+        "arm": "runsc",
+        "task": "openclose_work",
+        "rep": 2,
+        "wall_sec": 0.80609186,
+        "ns_per_op": 14520.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":14520.3}"
+      },
+      {
+        "arm": "runc",
+        "task": "openclose_work",
+        "rep": 2,
+        "wall_sec": 0.099747891,
+        "ns_per_op": 1570.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1570.2}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "openclose_work",
+        "rep": 2,
+        "wall_sec": 0.065148675,
+        "ns_per_op": 936.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":936.9}"
+      },
+      {
+        "arm": "runc",
+        "task": "openclose_work",
+        "rep": 3,
+        "wall_sec": 0.117987693,
+        "ns_per_op": 1513.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1513.2}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "openclose_work",
+        "rep": 3,
+        "wall_sec": 0.108319145,
+        "ns_per_op": 1498.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1498.8}"
+      },
+      {
+        "arm": "runsc",
+        "task": "openclose_work",
+        "rep": 3,
+        "wall_sec": 0.538528785,
+        "ns_per_op": 9554.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":9554.1}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "openclose_work",
+        "rep": 4,
+        "wall_sec": 0.109126288,
+        "ns_per_op": 1478.7,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1478.7}"
+      },
+      {
+        "arm": "runsc",
+        "task": "openclose_work",
+        "rep": 4,
+        "wall_sec": 0.785306877,
+        "ns_per_op": 14345.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":14345.2}"
+      },
+      {
+        "arm": "runc",
+        "task": "openclose_work",
+        "rep": 4,
+        "wall_sec": 0.067159926,
+        "ns_per_op": 957.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":957.3}"
+      },
+      {
+        "arm": "runsc",
+        "task": "openclose_work",
+        "rep": 5,
+        "wall_sec": 0.700067782,
+        "ns_per_op": 12619.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":12619.1}"
+      },
+      {
+        "arm": "runc",
+        "task": "openclose_work",
+        "rep": 5,
+        "wall_sec": 0.133916204,
+        "ns_per_op": 1853.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1853.1}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "openclose_work",
+        "rep": 5,
+        "wall_sec": 0.088942116,
+        "ns_per_op": 1126.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1126.5}"
+      },
+      {
+        "arm": "runc",
+        "task": "openclose_work",
+        "rep": 6,
+        "wall_sec": 0.137258631,
+        "ns_per_op": 1665.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1665.5}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "openclose_work",
+        "rep": 6,
+        "wall_sec": 0.098035934,
+        "ns_per_op": 1122.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1122.3}"
+      },
+      {
+        "arm": "runsc",
+        "task": "openclose_work",
+        "rep": 6,
+        "wall_sec": 0.897240172,
+        "ns_per_op": 16666.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":16666.4}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "openclose_work",
+        "rep": 7,
+        "wall_sec": 0.074763165,
+        "ns_per_op": 1061.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1061.5}"
+      },
+      {
+        "arm": "runsc",
+        "task": "openclose_work",
+        "rep": 7,
+        "wall_sec": 0.657689641,
+        "ns_per_op": 11748.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":11748.9}"
+      },
+      {
+        "arm": "runc",
+        "task": "openclose_work",
+        "rep": 7,
+        "wall_sec": 0.127313049,
+        "ns_per_op": 1943.7,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"openclose\",\"ops\":50000,\"ns_per_op\":1943.7}"
+      },
+      {
+        "arm": "runc",
+        "task": "forkexec",
+        "rep": 0,
+        "wall_sec": 0.397478726,
+        "ns_per_op": 1264063.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1264063.3}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "forkexec",
+        "rep": 0,
+        "wall_sec": 0.444412092,
+        "ns_per_op": 1414704.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1414704.6}"
+      },
+      {
+        "arm": "runsc",
+        "task": "forkexec",
+        "rep": 0,
+        "wall_sec": 3.942495264,
+        "ns_per_op": 12917632.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":12917632.8}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "forkexec",
+        "rep": 1,
+        "wall_sec": 0.425601025,
+        "ns_per_op": 1349430.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1349430.5}"
+      },
+      {
+        "arm": "runsc",
+        "task": "forkexec",
+        "rep": 1,
+        "wall_sec": 4.052839219,
+        "ns_per_op": 13284480.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":13284480.2}"
+      },
+      {
+        "arm": "runc",
+        "task": "forkexec",
+        "rep": 1,
+        "wall_sec": 0.45517026,
+        "ns_per_op": 1406893.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1406893.3}"
+      },
+      {
+        "arm": "runsc",
+        "task": "forkexec",
+        "rep": 2,
+        "wall_sec": 4.11119436,
+        "ns_per_op": 13507651.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":13507651.1}"
+      },
+      {
+        "arm": "runc",
+        "task": "forkexec",
+        "rep": 2,
+        "wall_sec": 0.396319109,
+        "ns_per_op": 1258229.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1258229.9}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "forkexec",
+        "rep": 2,
+        "wall_sec": 0.443363115,
+        "ns_per_op": 1335185.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1335185.1}"
+      },
+      {
+        "arm": "runc",
+        "task": "forkexec",
+        "rep": 3,
+        "wall_sec": 0.428508026,
+        "ns_per_op": 1339069.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1339069.4}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "forkexec",
+        "rep": 3,
+        "wall_sec": 0.539201264,
+        "ns_per_op": 1690662.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1690662.1}"
+      },
+      {
+        "arm": "runsc",
+        "task": "forkexec",
+        "rep": 3,
+        "wall_sec": 3.900478792,
+        "ns_per_op": 12743585.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":12743585.2}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "forkexec",
+        "rep": 4,
+        "wall_sec": 0.435124918,
+        "ns_per_op": 1342426.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1342426.9}"
+      },
+      {
+        "arm": "runsc",
+        "task": "forkexec",
+        "rep": 4,
+        "wall_sec": 3.851568215,
+        "ns_per_op": 12574260.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":12574260.3}"
+      },
+      {
+        "arm": "runc",
+        "task": "forkexec",
+        "rep": 4,
+        "wall_sec": 0.425308514,
+        "ns_per_op": 1318251.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1318251.6}"
+      },
+      {
+        "arm": "runsc",
+        "task": "forkexec",
+        "rep": 5,
+        "wall_sec": 3.952835437,
+        "ns_per_op": 12927449.7,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":12927449.7}"
+      },
+      {
+        "arm": "runc",
+        "task": "forkexec",
+        "rep": 5,
+        "wall_sec": 0.422052152,
+        "ns_per_op": 1281957.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1281957.8}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "forkexec",
+        "rep": 5,
+        "wall_sec": 0.405479977,
+        "ns_per_op": 1260498.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1260498.5}"
+      },
+      {
+        "arm": "runc",
+        "task": "forkexec",
+        "rep": 6,
+        "wall_sec": 0.491466368,
+        "ns_per_op": 1556137.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1556137.3}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "forkexec",
+        "rep": 6,
+        "wall_sec": 0.546717868,
+        "ns_per_op": 1742316.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1742316.4}"
+      },
+      {
+        "arm": "runsc",
+        "task": "forkexec",
+        "rep": 6,
+        "wall_sec": 3.865383763,
+        "ns_per_op": 12650465.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":12650465.3}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "forkexec",
+        "rep": 7,
+        "wall_sec": 0.447058664,
+        "ns_per_op": 1399203.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1399203.2}"
+      },
+      {
+        "arm": "runsc",
+        "task": "forkexec",
+        "rep": 7,
+        "wall_sec": 4.071389633,
+        "ns_per_op": 13360443.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":13360443.5}"
+      },
+      {
+        "arm": "runc",
+        "task": "forkexec",
+        "rep": 7,
+        "wall_sec": 0.471130128,
+        "ns_per_op": 1441594.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"forkexec\",\"ops\":300,\"ns_per_op\":1441594.8}"
+      },
+      {
+        "arm": "runc",
+        "task": "pipe_rtt",
+        "rep": 0,
+        "wall_sec": 0.373958014,
+        "ns_per_op": 7032.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":7032.3}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pipe_rtt",
+        "rep": 0,
+        "wall_sec": 1.184998877,
+        "ns_per_op": 23063.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":23063.6}"
+      },
+      {
+        "arm": "runsc",
+        "task": "pipe_rtt",
+        "rep": 0,
+        "wall_sec": 3.935670348,
+        "ns_per_op": 77219.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":77219.9}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pipe_rtt",
+        "rep": 1,
+        "wall_sec": 1.9875800300000002,
+        "ns_per_op": 39133.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":39133.5}"
+      },
+      {
+        "arm": "runsc",
+        "task": "pipe_rtt",
+        "rep": 1,
+        "wall_sec": 5.12036038,
+        "ns_per_op": 101147.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":101147.5}"
+      },
+      {
+        "arm": "runc",
+        "task": "pipe_rtt",
+        "rep": 1,
+        "wall_sec": 1.9935655780000001,
+        "ns_per_op": 39282.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":39282.8}"
+      },
+      {
+        "arm": "runsc",
+        "task": "pipe_rtt",
+        "rep": 2,
+        "wall_sec": 4.082399633,
+        "ns_per_op": 80165.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":80165.4}"
+      },
+      {
+        "arm": "runc",
+        "task": "pipe_rtt",
+        "rep": 2,
+        "wall_sec": 1.8672563819999999,
+        "ns_per_op": 36415.7,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":36415.7}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pipe_rtt",
+        "rep": 2,
+        "wall_sec": 1.867817353,
+        "ns_per_op": 36588.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":36588.9}"
+      },
+      {
+        "arm": "runc",
+        "task": "pipe_rtt",
+        "rep": 3,
+        "wall_sec": 1.854447728,
+        "ns_per_op": 36059.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":36059.8}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pipe_rtt",
+        "rep": 3,
+        "wall_sec": 1.864275476,
+        "ns_per_op": 36544.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":36544.5}"
+      },
+      {
+        "arm": "runsc",
+        "task": "pipe_rtt",
+        "rep": 3,
+        "wall_sec": 3.398393108,
+        "ns_per_op": 66411.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":66411.9}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pipe_rtt",
+        "rep": 4,
+        "wall_sec": 1.984332137,
+        "ns_per_op": 38742.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":38742.4}"
+      },
+      {
+        "arm": "runsc",
+        "task": "pipe_rtt",
+        "rep": 4,
+        "wall_sec": 5.138875226,
+        "ns_per_op": 101109.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":101109.2}"
+      },
+      {
+        "arm": "runc",
+        "task": "pipe_rtt",
+        "rep": 4,
+        "wall_sec": 1.959882059,
+        "ns_per_op": 38435.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":38435.3}"
+      },
+      {
+        "arm": "runsc",
+        "task": "pipe_rtt",
+        "rep": 5,
+        "wall_sec": 4.568406373,
+        "ns_per_op": 89940.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":89940.4}"
+      },
+      {
+        "arm": "runc",
+        "task": "pipe_rtt",
+        "rep": 5,
+        "wall_sec": 1.929402381,
+        "ns_per_op": 37977.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":37977.9}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pipe_rtt",
+        "rep": 5,
+        "wall_sec": 2.006933367,
+        "ns_per_op": 39491.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":39491.4}"
+      },
+      {
+        "arm": "runc",
+        "task": "pipe_rtt",
+        "rep": 6,
+        "wall_sec": 1.801733196,
+        "ns_per_op": 35660.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":35660.2}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pipe_rtt",
+        "rep": 6,
+        "wall_sec": 1.7795977760000001,
+        "ns_per_op": 34935,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":34935.0}"
+      },
+      {
+        "arm": "runsc",
+        "task": "pipe_rtt",
+        "rep": 6,
+        "wall_sec": 5.430510578,
+        "ns_per_op": 106960.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":106960.2}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "pipe_rtt",
+        "rep": 7,
+        "wall_sec": 1.952850974,
+        "ns_per_op": 38334.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":38334.5}"
+      },
+      {
+        "arm": "runsc",
+        "task": "pipe_rtt",
+        "rep": 7,
+        "wall_sec": 3.58354532,
+        "ns_per_op": 70149.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":70149.1}"
+      },
+      {
+        "arm": "runc",
+        "task": "pipe_rtt",
+        "rep": 7,
+        "wall_sec": 1.8400809310000001,
+        "ns_per_op": 36077.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"pipe\",\"ops\":50000,\"ns_per_op\":36077.3}"
+      },
+      {
+        "arm": "runc",
+        "task": "write_work",
+        "rep": 0,
+        "wall_sec": 0.350845554,
+        "ns_per_op": 78160.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":78160.6}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "write_work",
+        "rep": 0,
+        "wall_sec": 0.36341633,
+        "ns_per_op": 78837.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":78837.3}"
+      },
+      {
+        "arm": "runsc",
+        "task": "write_work",
+        "rep": 0,
+        "wall_sec": 0.537299797,
+        "ns_per_op": 113786.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":113786.2}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "write_work",
+        "rep": 1,
+        "wall_sec": 0.354350433,
+        "ns_per_op": 75453.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":75453.9}"
+      },
+      {
+        "arm": "runsc",
+        "task": "write_work",
+        "rep": 1,
+        "wall_sec": 0.481568577,
+        "ns_per_op": 101563.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":101563.2}"
+      },
+      {
+        "arm": "runc",
+        "task": "write_work",
+        "rep": 1,
+        "wall_sec": 0.338691878,
+        "ns_per_op": 74943,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":74943.0}"
+      },
+      {
+        "arm": "runsc",
+        "task": "write_work",
+        "rep": 2,
+        "wall_sec": 0.470497228,
+        "ns_per_op": 95992.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":95992.2}"
+      },
+      {
+        "arm": "runc",
+        "task": "write_work",
+        "rep": 2,
+        "wall_sec": 0.30687954,
+        "ns_per_op": 70476.7,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":70476.7}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "write_work",
+        "rep": 2,
+        "wall_sec": 0.333390945,
+        "ns_per_op": 73474.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":73474.4}"
+      },
+      {
+        "arm": "runc",
+        "task": "write_work",
+        "rep": 3,
+        "wall_sec": 0.330418194,
+        "ns_per_op": 73924.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":73924.8}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "write_work",
+        "rep": 3,
+        "wall_sec": 0.330969052,
+        "ns_per_op": 76192.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":76192.1}"
+      },
+      {
+        "arm": "runsc",
+        "task": "write_work",
+        "rep": 3,
+        "wall_sec": 0.407390472,
+        "ns_per_op": 83311.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":83311.3}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "write_work",
+        "rep": 4,
+        "wall_sec": 0.339477412,
+        "ns_per_op": 74248.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":74248.8}"
+      },
+      {
+        "arm": "runsc",
+        "task": "write_work",
+        "rep": 4,
+        "wall_sec": 0.501957994,
+        "ns_per_op": 105366.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":105366.5}"
+      },
+      {
+        "arm": "runc",
+        "task": "write_work",
+        "rep": 4,
+        "wall_sec": 0.346546285,
+        "ns_per_op": 75915.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":75915.1}"
+      },
+      {
+        "arm": "runsc",
+        "task": "write_work",
+        "rep": 5,
+        "wall_sec": 0.420510276,
+        "ns_per_op": 85783.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":85783.1}"
+      },
+      {
+        "arm": "runc",
+        "task": "write_work",
+        "rep": 5,
+        "wall_sec": 0.333102338,
+        "ns_per_op": 75531.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":75531.1}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "write_work",
+        "rep": 5,
+        "wall_sec": 0.330780632,
+        "ns_per_op": 73966.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":73966.2}"
+      },
+      {
+        "arm": "runc",
+        "task": "write_work",
+        "rep": 6,
+        "wall_sec": 0.338906632,
+        "ns_per_op": 74061.7,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":74061.7}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "write_work",
+        "rep": 6,
+        "wall_sec": 0.312137906,
+        "ns_per_op": 71580.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":71580.5}"
+      },
+      {
+        "arm": "runsc",
+        "task": "write_work",
+        "rep": 6,
+        "wall_sec": 0.434483489,
+        "ns_per_op": 93205.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":93205.3}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "write_work",
+        "rep": 7,
+        "wall_sec": 0.342450778,
+        "ns_per_op": 74114.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":74114.6}"
+      },
+      {
+        "arm": "runsc",
+        "task": "write_work",
+        "rep": 7,
+        "wall_sec": 0.557984706,
+        "ns_per_op": 121627,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":121627.0}"
+      },
+      {
+        "arm": "runc",
+        "task": "write_work",
+        "rep": 7,
+        "wall_sec": 0.335101228,
+        "ns_per_op": 75396.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"write\",\"ops\":4096,\"ns_per_op\":75396.8}"
+      },
+      {
+        "arm": "runc",
+        "task": "read_work",
+        "rep": 0,
+        "wall_sec": 0.097114693,
+        "ns_per_op": 8185.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":8185.8}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "read_work",
+        "rep": 0,
+        "wall_sec": 0.058386593,
+        "ns_per_op": 8404.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":8404.8}"
+      },
+      {
+        "arm": "runsc",
+        "task": "read_work",
+        "rep": 0,
+        "wall_sec": 0.135618019,
+        "ns_per_op": 20774.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":20774.8}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "read_work",
+        "rep": 1,
+        "wall_sec": 0.076878956,
+        "ns_per_op": 8838.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":8838.2}"
+      },
+      {
+        "arm": "runsc",
+        "task": "read_work",
+        "rep": 1,
+        "wall_sec": 0.125290276,
+        "ns_per_op": 19175.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":19175.6}"
+      },
+      {
+        "arm": "runc",
+        "task": "read_work",
+        "rep": 1,
+        "wall_sec": 0.075287138,
+        "ns_per_op": 8751.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":8751.8}"
+      },
+      {
+        "arm": "runsc",
+        "task": "read_work",
+        "rep": 2,
+        "wall_sec": 0.133373092,
+        "ns_per_op": 19642.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":19642.2}"
+      },
+      {
+        "arm": "runc",
+        "task": "read_work",
+        "rep": 2,
+        "wall_sec": 0.070487035,
+        "ns_per_op": 9332.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":9332.5}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "read_work",
+        "rep": 2,
+        "wall_sec": 0.076224814,
+        "ns_per_op": 8357.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":8357.3}"
+      },
+      {
+        "arm": "runc",
+        "task": "read_work",
+        "rep": 3,
+        "wall_sec": 0.062706247,
+        "ns_per_op": 8734.4,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":8734.4}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "read_work",
+        "rep": 3,
+        "wall_sec": 0.082916585,
+        "ns_per_op": 8971.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":8971.8}"
+      },
+      {
+        "arm": "runsc",
+        "task": "read_work",
+        "rep": 3,
+        "wall_sec": 0.126467673,
+        "ns_per_op": 18401.9,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":18401.9}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "read_work",
+        "rep": 4,
+        "wall_sec": 0.064669729,
+        "ns_per_op": 9637.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":9637.8}"
+      },
+      {
+        "arm": "runsc",
+        "task": "read_work",
+        "rep": 4,
+        "wall_sec": 0.144950481,
+        "ns_per_op": 22555.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":22555.2}"
+      },
+      {
+        "arm": "runc",
+        "task": "read_work",
+        "rep": 4,
+        "wall_sec": 0.078052787,
+        "ns_per_op": 8283.7,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":8283.7}"
+      },
+      {
+        "arm": "runsc",
+        "task": "read_work",
+        "rep": 5,
+        "wall_sec": 0.143104577,
+        "ns_per_op": 21937.6,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":21937.6}"
+      },
+      {
+        "arm": "runc",
+        "task": "read_work",
+        "rep": 5,
+        "wall_sec": 0.069882579,
+        "ns_per_op": 10371.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":10371.5}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "read_work",
+        "rep": 5,
+        "wall_sec": 0.090112605,
+        "ns_per_op": 9918.8,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":9918.8}"
+      },
+      {
+        "arm": "runc",
+        "task": "read_work",
+        "rep": 6,
+        "wall_sec": 0.061668985,
+        "ns_per_op": 8741.5,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":8741.5}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "read_work",
+        "rep": 6,
+        "wall_sec": 0.055241999,
+        "ns_per_op": 8682.1,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":8682.1}"
+      },
+      {
+        "arm": "runsc",
+        "task": "read_work",
+        "rep": 6,
+        "wall_sec": 0.121753655,
+        "ns_per_op": 19598.7,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":19598.7}"
+      },
+      {
+        "arm": "runc-aa",
+        "task": "read_work",
+        "rep": 7,
+        "wall_sec": 0.068716274,
+        "ns_per_op": 8613.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":8613.2}"
+      },
+      {
+        "arm": "runsc",
+        "task": "read_work",
+        "rep": 7,
+        "wall_sec": 0.123645222,
+        "ns_per_op": 18521.3,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":18521.3}"
+      },
+      {
+        "arm": "runc",
+        "task": "read_work",
+        "rep": 7,
+        "wall_sec": 0.088296498,
+        "ns_per_op": 10209.2,
+        "exit_code": 0,
+        "output_tail": "{\"bench\":\"read\",\"ops\":4096,\"ns_per_op\":10209.2}"
+      }
+    ],
+    "summary": [
+      {
+        "task": "git_clone",
+        "kind": "agent",
+        "metric": "wall_sec",
+        "by_arm": {
+          "runc": {
+            "n": 8,
+            "p50": 1.3879826645,
+            "p90": 1.4157396721,
+            "p99": 1.43933117941,
+            "mean": 1.3757907425,
+            "min": 1.306914846,
+            "max": 1.441952458
+          },
+          "runc-aa": {
+            "n": 8,
+            "p50": 1.272951445,
+            "p90": 1.4604511451,
+            "p99": 1.46833473011,
+            "mean": 1.3190622801249998,
+            "min": 1.205716782,
+            "max": 1.469210684
+          },
+          "runsc": {
+            "n": 8,
+            "p50": 3.470683207,
+            "p90": 3.6775427108,
+            "p99": 3.69634112708,
+            "mean": 3.4993406983749997,
+            "min": 3.326938769,
+            "max": 3.69842984
+          }
+        },
+        "failures": {},
+        "runsc_over_runc": {
+          "ratio": 2.500523454484399,
+          "ci95_lo": 2.42418793667608,
+          "ci95_hi": 2.619186677162689
+        },
+        "runc_aa_over_runc": {
+          "ratio": 0.9171234465371091,
+          "ci95_lo": 0.8951019348700624,
+          "ci95_hi": 1.0371600050719911
+        }
+      },
+      {
+        "task": "pip_install",
+        "kind": "agent",
+        "metric": "wall_sec",
+        "by_arm": {
+          "runc": {
+            "n": 8,
+            "p50": 5.4515452235,
+            "p90": 5.769328815,
+            "p99": 5.9632738551,
+            "mean": 5.440609078875,
+            "min": 4.872746926,
+            "max": 5.984823304
+          },
+          "runc-aa": {
+            "n": 8,
+            "p50": 5.566678272500001,
+            "p90": 5.8547597836000005,
+            "p99": 5.90467007956,
+            "mean": 5.575580845875,
+            "min": 5.281845487,
+            "max": 5.910215668
+          },
+          "runsc": {
+            "n": 8,
+            "p50": 9.747275786,
+            "p90": 10.4506934781,
+            "p99": 10.79924096991,
+            "mean": 9.78375325675,
+            "min": 9.124225424,
+            "max": 10.837968469
+          }
+        },
+        "failures": {},
+        "runsc_over_runc": {
+          "ratio": 1.7879840277179349,
+          "ci95_lo": 1.711828037353494,
+          "ci95_hi": 1.8932012149035504
+        },
+        "runc_aa_over_runc": {
+          "ratio": 1.0211193421827809,
+          "ci95_lo": 0.9675367245143868,
+          "ci95_hi": 1.0893589309411198
+        }
+      },
+      {
+        "task": "pytest",
+        "kind": "agent",
+        "metric": "wall_sec",
+        "by_arm": {
+          "runc": {
+            "n": 8,
+            "p50": 2.9333989825,
+            "p90": 3.1004555666,
+            "p99": 3.2401894481599998,
+            "mean": 2.9523944175,
+            "min": 2.785656966,
+            "max": 3.255715435
+          },
+          "runc-aa": {
+            "n": 8,
+            "p50": 2.956366548,
+            "p90": 3.0143701325,
+            "p99": 3.04284471185,
+            "mean": 2.9271368326249996,
+            "min": 2.762274589,
+            "max": 3.046008554
+          },
+          "runsc": {
+            "n": 8,
+            "p50": 4.05306911,
+            "p90": 4.1979226709,
+            "p99": 4.302121781089999,
+            "mean": 4.081650251375,
+            "min": 3.964704489,
+            "max": 4.31369946
+          }
+        },
+        "failures": {},
+        "runsc_over_runc": {
+          "ratio": 1.3816971827493296,
+          "ci95_lo": 1.3310409234475933,
+          "ci95_hi": 1.4468417724310552
+        },
+        "runc_aa_over_runc": {
+          "ratio": 1.0078296766437227,
+          "ci95_lo": 0.9542110438776061,
+          "ci95_hi": 1.050291160321698
+        }
+      },
+      {
+        "task": "compile_c",
+        "kind": "agent",
+        "metric": "wall_sec",
+        "by_arm": {
+          "runc": {
+            "n": 8,
+            "p50": 3.7984105075,
+            "p90": 4.0450620543,
+            "p99": 4.05860513343,
+            "mean": 3.8199706303750003,
+            "min": 3.520724242,
+            "max": 4.06010992
+          },
+          "runc-aa": {
+            "n": 8,
+            "p50": 4.025571786,
+            "p90": 4.1685270561,
+            "p99": 4.19929556751,
+            "mean": 3.9942289146249994,
+            "min": 3.753093335,
+            "max": 4.202714291
+          },
+          "runsc": {
+            "n": 8,
+            "p50": 9.674076415,
+            "p90": 10.0348584287,
+            "p99": 10.37188222007,
+            "mean": 9.706803028375,
+            "min": 9.271477396,
+            "max": 10.409329308
+          }
+        },
+        "failures": {},
+        "runsc_over_runc": {
+          "ratio": 2.5468749088331655,
+          "ci95_lo": 2.4203836366473763,
+          "ci95_hi": 2.6104526522966633
+        },
+        "runc_aa_over_runc": {
+          "ratio": 1.059804299206594,
+          "ci95_lo": 0.9920442928750601,
+          "ci95_hi": 1.0960409756343328
+        }
+      },
+      {
+        "task": "python_imports",
+        "kind": "agent",
+        "metric": "wall_sec",
+        "by_arm": {
+          "runc": {
+            "n": 8,
+            "p50": 2.1580997285,
+            "p90": 2.4148308104,
+            "p99": 2.44043268614,
+            "mean": 2.201980620875,
+            "min": 2.045596067,
+            "max": 2.4432773389999998
+          },
+          "runc-aa": {
+            "n": 8,
+            "p50": 2.1143157475,
+            "p90": 2.1899116499,
+            "p99": 2.22825002459,
+            "mean": 2.113027930625,
+            "min": 1.9844282359999998,
+            "max": 2.232509844
+          },
+          "runsc": {
+            "n": 8,
+            "p50": 4.2955727005,
+            "p90": 4.4749584057,
+            "p99": 4.53111413547,
+            "mean": 4.277556095875,
+            "min": 4.022915155,
+            "max": 4.537353661
+          }
+        },
+        "failures": {},
+        "runsc_over_runc": {
+          "ratio": 1.9904421671400996,
+          "ci95_lo": 1.8284676513598477,
+          "ci95_hi": 2.123430287566606
+        },
+        "runc_aa_over_runc": {
+          "ratio": 0.9797117897649558,
+          "ci95_lo": 0.8923400207643628,
+          "ci95_hi": 1.0403427037519082
+        }
+      },
+      {
+        "task": "getpid",
+        "kind": "micro",
+        "metric": "ns_per_op",
+        "by_arm": {
+          "runc": {
+            "n": 8,
+            "p50": 145.65,
+            "p90": 178,
+            "p99": 191.86,
+            "mean": 145.1625,
+            "min": 107.4,
+            "max": 193.4
+          },
+          "runc-aa": {
+            "n": 8,
+            "p50": 126.35,
+            "p90": 145.4,
+            "p99": 146.03,
+            "mean": 127.9375,
+            "min": 111.3,
+            "max": 146.1
+          },
+          "runsc": {
+            "n": 8,
+            "p50": 5048.35,
+            "p90": 5290.62,
+            "p99": 5424.432,
+            "mean": 5018.3625,
+            "min": 4645.6,
+            "max": 5439.3
+          }
+        },
+        "failures": {},
+        "runsc_over_runc": {
+          "ratio": 34.66083075866804,
+          "ci95_lo": 29.370478413068845,
+          "ci95_hi": 43.44595821980018
+        },
+        "runc_aa_over_runc": {
+          "ratio": 0.8674905595605904,
+          "ci95_lo": 0.7101316192225282,
+          "ci95_hi": 1.1529896907216495
+        }
+      },
+      {
+        "task": "stat_work",
+        "kind": "micro",
+        "metric": "ns_per_op",
+        "by_arm": {
+          "runc": {
+            "n": 8,
+            "p50": 574.3,
+            "p90": 888.63,
+            "p99": 894.3629999999999,
+            "mean": 656.475,
+            "min": 512.6,
+            "max": 895
+          },
+          "runc-aa": {
+            "n": 8,
+            "p50": 662.95,
+            "p90": 965.5500000000001,
+            "p99": 993.585,
+            "mean": 725.4124999999999,
+            "min": 516.5,
+            "max": 996.7
+          },
+          "runsc": {
+            "n": 8,
+            "p50": 7763.799999999999,
+            "p90": 8594.849999999999,
+            "p99": 8801.804999999998,
+            "mean": 7755.599999999999,
+            "min": 6003.4,
+            "max": 8824.8
+          }
+        },
+        "failures": {},
+        "runsc_over_runc": {
+          "ratio": 13.518718439839805,
+          "ci95_lo": 9.339800995024875,
+          "ci95_hi": 15.058539254126014
+        },
+        "runc_aa_over_runc": {
+          "ratio": 1.154361831795229,
+          "ci95_lo": 0.6928513352930139,
+          "ci95_hi": 1.6653689612457971
+        }
+      },
+      {
+        "task": "stat_tmp",
+        "kind": "micro",
+        "metric": "ns_per_op",
+        "by_arm": {
+          "runc": {
+            "n": 8,
+            "p50": 535.7,
+            "p90": 633.4599999999999,
+            "p99": 697.846,
+            "mean": 563.5250000000001,
+            "min": 511.7,
+            "max": 705
+          },
+          "runc-aa": {
+            "n": 8,
+            "p50": 557.85,
+            "p90": 636.41,
+            "p99": 726.3109999999999,
+            "mean": 576.6875000000001,
+            "min": 523.2,
+            "max": 736.3
+          },
+          "runsc": {
+            "n": 8,
+            "p50": 3673.8999999999996,
+            "p90": 4439.95,
+            "p99": 4485.625,
+            "mean": 3760.1625000000004,
+            "min": 2799.6,
+            "max": 4490.7
+          }
+        },
+        "failures": {},
+        "runsc_over_runc": {
+          "ratio": 6.858129550121335,
+          "ci95_lo": 6.0099659925818685,
+          "ci95_hi": 8.24906015037594
+        },
+        "runc_aa_over_runc": {
+          "ratio": 1.0413477692738473,
+          "ci95_lo": 0.9121817871177175,
+          "ci95_hi": 1.11195807527394
+        }
+      },
+      {
+        "task": "openclose_work",
+        "kind": "micro",
+        "metric": "ns_per_op",
+        "by_arm": {
+          "runc": {
+            "n": 8,
+            "p50": 1617.85,
+            "p90": 1880.28,
+            "p99": 1937.358,
+            "mean": 1550.9250000000002,
+            "min": 957.3,
+            "max": 1943.7
+          },
+          "runc-aa": {
+            "n": 8,
+            "p50": 1091.9,
+            "p90": 1484.73,
+            "p99": 1497.393,
+            "mean": 1162.0375,
+            "min": 936.9,
+            "max": 1498.8
+          },
+          "runsc": {
+            "n": 8,
+            "p50": 12253.6,
+            "p90": 15164.13,
+            "p99": 16516.173000000003,
+            "mean": 12819.1375,
+            "min": 9554.1,
+            "max": 16666.4
+          }
+        },
+        "failures": {},
+        "runsc_over_runc": {
+          "ratio": 7.574002534227525,
+          "ci95_lo": 6.345318372761442,
+          "ci95_hi": 10.999233246434596
+        },
+        "runc_aa_over_runc": {
+          "ratio": 0.6749080569892142,
+          "ci95_lo": 0.5728239166801576,
+          "ci95_hi": 0.9987731942953534
+        }
+      },
+      {
+        "task": "forkexec",
+        "kind": "micro",
+        "metric": "ns_per_op",
+        "by_arm": {
+          "runc": {
+            "n": 8,
+            "p50": 1328660.5,
+            "p90": 1475957.55,
+            "p99": 1548119.325,
+            "mean": 1358274.675,
+            "min": 1258229.9,
+            "max": 1556137.3
+          },
+          "runc-aa": {
+            "n": 8,
+            "p50": 1374316.85,
+            "p90": 1706158.3900000001,
+            "p99": 1738700.599,
+            "mean": 1441803.4125,
+            "min": 1260498.5,
+            "max": 1742316.4
+          },
+          "runsc": {
+            "n": 8,
+            "p50": 12922541.25,
+            "p90": 13404605.78,
+            "p99": 13497346.568,
+            "mean": 12995746.0125,
+            "min": 12574260.3,
+            "max": 13507651.1
+          }
+        },
+        "failures": {},
+        "runsc_over_runc": {
+          "ratio": 9.72599189183392,
+          "ci95_lo": 8.976024193325575,
+          "ci95_hi": 10.36424085724188
+        },
+        "runc_aa_over_runc": {
+          "ratio": 1.0343626908454042,
+          "ci95_lo": 0.9591562487361337,
+          "ci95_hi": 1.1929344593151168
+        }
+      },
+      {
+        "task": "pipe_rtt",
+        "kind": "micro",
+        "metric": "ns_per_op",
+        "by_arm": {
+          "runc": {
+            "n": 8,
+            "p50": 36246.5,
+            "p90": 38689.55,
+            "p99": 39223.475000000006,
+            "mean": 33367.6625,
+            "min": 7032.3,
+            "max": 39282.8
+          },
+          "runc-aa": {
+            "n": 8,
+            "p50": 37461.7,
+            "p90": 39240.87,
+            "p99": 39466.347,
+            "mean": 35854.225,
+            "min": 23063.6,
+            "max": 39491.4
+          },
+          "runsc": {
+            "n": 8,
+            "p50": 85052.9,
+            "p90": 102891.31,
+            "p99": 106553.311,
+            "mean": 86637.94999999998,
+            "min": 66411.9,
+            "max": 106960.2
+          }
+        },
+        "failures": {},
+        "runsc_over_runc": {
+          "ratio": 2.346513456471659,
+          "ci95_lo": 1.9448827302456018,
+          "ci95_hi": 2.819933786373933
+        },
+        "runc_aa_over_runc": {
+          "ratio": 1.0335259956133696,
+          "ci95_lo": 0.9923414067670331,
+          "ci95_hi": 1.0625656576295897
+        }
+      },
+      {
+        "task": "write_work",
+        "kind": "micro",
+        "metric": "ns_per_op",
+        "by_arm": {
+          "runc": {
+            "n": 8,
+            "p50": 75169.9,
+            "p90": 76588.75,
+            "p99": 78003.41500000001,
+            "mean": 74801.22499999999,
+            "min": 70476.7,
+            "max": 78160.6
+          },
+          "runc-aa": {
+            "n": 8,
+            "p50": 74181.70000000001,
+            "p90": 76985.66,
+            "p99": 78652.136,
+            "mean": 74733.475,
+            "min": 71580.5,
+            "max": 78837.3
+          },
+          "runsc": {
+            "n": 8,
+            "p50": 98777.7,
+            "p90": 116138.44,
+            "p99": 121078.144,
+            "mean": 100079.35,
+            "min": 83311.3,
+            "max": 121627
+          }
+        },
+        "failures": {},
+        "runsc_over_runc": {
+          "ratio": 1.3140592178518264,
+          "ci95_lo": 1.1582653382247505,
+          "ci95_hi": 1.4820664060532367
+        },
+        "runc_aa_over_runc": {
+          "ratio": 0.9868537805690843,
+          "ci95_lo": 0.9792813821061787,
+          "ci95_hi": 1.0195930705980827
+        }
+      },
+      {
+        "task": "read_work",
+        "kind": "micro",
+        "metric": "ns_per_op",
+        "by_arm": {
+          "runc": {
+            "n": 8,
+            "p50": 8746.65,
+            "p90": 10257.890000000001,
+            "p99": 10360.139,
+            "mean": 9076.3,
+            "min": 8185.8,
+            "max": 10371.5
+          },
+          "runc-aa": {
+            "n": 8,
+            "p50": 8760.150000000001,
+            "p90": 9722.099999999999,
+            "p99": 9899.13,
+            "mean": 8928,
+            "min": 8357.3,
+            "max": 9918.8
+          },
+          "runsc": {
+            "n": 8,
+            "p50": 19620.45,
+            "p90": 22122.879999999997,
+            "p99": 22511.968,
+            "mean": 20075.9125,
+            "min": 18401.9,
+            "max": 22555.2
+          }
+        },
+        "failures": {},
+        "runsc_over_runc": {
+          "ratio": 2.243195966455729,
+          "ci95_lo": 1.9565881753712333,
+          "ci95_hi": 2.5098218955112497
+        },
+        "runc_aa_over_runc": {
+          "ratio": 1.0015434480629728,
+          "ci95_lo": 0.8815200315223344,
+          "ci95_hi": 1.0935180778112716
+        }
+      }
+    ],
+    "tasks": [
+      {
+        "name": "git_clone",
+        "kind": "agent",
+        "run": "git clone -q file:///corpus/repos/flask.git flask \u0026\u0026 git -C flask checkout -q 3.1.0 \u0026\u0026 git -C flask log --oneline | wc -l",
+        "desc": "clone flask over the git protocol (pack transfer + checkout), then walk history"
+      },
+      {
+        "name": "pip_install",
+        "kind": "agent",
+        "run": "python3 -m venv /work/venv \u0026\u0026 /work/venv/bin/pip install -q --no-index --find-links /corpus/wheels pytest more-itertools flask requests numpy \u0026\u0026 /work/venv/bin/python -c 'import numpy, flask, requests'",
+        "desc": "create a venv and install pytest, flask, requests, numpy from local wheels"
+      },
+      {
+        "name": "pytest",
+        "kind": "agent",
+        "setup": "python3 -m venv /work/venv \u0026\u0026 /work/venv/bin/pip install -q --no-index --find-links /corpus/wheels pytest \u0026\u0026 git clone -q /corpus/repos/more-itertools.git mi \u0026\u0026 git -C mi checkout -q v10.5.0",
+        "run": "cd mi \u0026\u0026 /work/venv/bin/python -m pytest -q -p no:cacheprovider tests | tail -1",
+        "desc": "run the more-itertools test suite (663 tests)"
+      },
+      {
+        "name": "compile_c",
+        "kind": "agent",
+        "setup": "cp -r /corpus/src/lua /work/lua",
+        "run": "make -s -C /work/lua -j2 MYCFLAGS=-std=c99 MYLIBS= CC=gcc \u003e/dev/null 2\u003e\u00261 || make -C /work/lua -j2 CC=gcc 2\u003e\u00261 | tail -3; test -x /work/lua/lua \u0026\u0026 /work/lua/lua -v",
+        "desc": "build Lua 5.4 from source with make -j2 (many short gcc processes)"
+      },
+      {
+        "name": "python_imports",
+        "kind": "agent",
+        "run": "for i in $(seq 20); do python3 -c 'import json, asyncio, email.parser, http.client, sqlite3, xml.etree.ElementTree, decimal, unittest' || exit 1; done",
+        "desc": "20 fresh python3 processes importing common stdlib modules (code-exec job startup)"
+      },
+      {
+        "name": "getpid",
+        "kind": "micro",
+        "run": "/corpus/bin/micro getpid 1000000",
+        "desc": "raw getpid syscall"
+      },
+      {
+        "name": "stat_work",
+        "kind": "micro",
+        "run": "/corpus/bin/micro stat 100000 /work/f",
+        "desc": "stat on the bind-mounted /work"
+      },
+      {
+        "name": "stat_tmp",
+        "kind": "micro",
+        "run": "/corpus/bin/micro stat 100000 /tmp/f",
+        "desc": "stat on the sandbox tmpfs"
+      },
+      {
+        "name": "openclose_work",
+        "kind": "micro",
+        "run": "/corpus/bin/micro openclose 50000 /work/f",
+        "desc": "open+close on /work"
+      },
+      {
+        "name": "forkexec",
+        "kind": "micro",
+        "run": "/corpus/bin/micro forkexec 300",
+        "desc": "fork + exec /bin/true + wait"
+      },
+      {
+        "name": "pipe_rtt",
+        "kind": "micro",
+        "run": "/corpus/bin/micro pipe 50000",
+        "desc": "1-byte pipe round trip between two processes"
+      },
+      {
+        "name": "write_work",
+        "kind": "micro",
+        "run": "/corpus/bin/micro write 256 /work/big",
+        "desc": "256 MiB sequential write + fsync on /work"
+      },
+      {
+        "name": "read_work",
+        "kind": "micro",
+        "setup": "/corpus/bin/micro write 256 /work/big \u003e/dev/null",
+        "run": "/corpus/bin/micro read 256 /work/big",
+        "desc": "256 MiB sequential read on /work (page cache warm)"
+      }
+    ]
+  }
+}
