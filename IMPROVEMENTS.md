@@ -183,3 +183,66 @@ The driver is tested against a stand-in, not against runc or runsc themselves (n
 
 `internal/rt/cli_test.go` (new), `internal/work/work_test.go` (new), `docs/architecture.md` (new), `README.md`,
 `IMPROVEMENTS.md`.
+
+## Round 4 (2026-11-05): the runtime benchmark starts on a fresh machine; runc side re-measured; runc smoke test in CI
+
+Stacked on round 3 (`improve/round-3`).
+
+### What changed
+
+1. **Bug: `bench/run_all.sh` failed on a fresh machine.** The container root is a read-only bind of the host's
+   `/`, and the bundle bind-mounts the corpus at `/corpus` and a work directory at `/work`. On a read-only root the
+   mount points must already exist, and nothing created them, so the first `runc create` failed:
+
+   ```
+   runc create failed: ... error mounting "/home/user/sandboxbench/corpus" to rootfs at "/corpus":
+   create mountpoint for /corpus mount: make mountpoint "/corpus": mkdirat /var/lib/sandboxbench/rootfs/corpus:
+   read-only file system
+   ```
+
+   `bench/rootfs.sh` now creates the two empty directories on the host before binding the root.
+2. **runc side of the README re-measured** (same VM type, runc 1.5.2 as in `results/`, corpus from
+   `bench/prepare.sh`). gVisor could not be built here (see below), so all three arms were runc, via
+   `bench/runc-as-runsc.sh`, which drops runsc's `--platform`/`--network` flags; only the runc and A/A columns are
+   meaningful:
+
+   | | committed | re-run |
+   |---|---|---|
+   | cold start: claim to first exec, runc p50 (40 reps) | 70.2 ms | 45.9 ms |
+   | teardown p50 / one-shot `run` p50 | 115.8 / 35.0 ms | 113.7 / 37.1 ms |
+   | A/A claim-to-first-exec ratio | 1.008 [0.918, 1.087] | 0.985 [0.898, 1.121] |
+   | runc p50: git clone, pip install, pytest, Lua build, python imports (8 reps) | 1.39, 5.45, 2.93, 3.80, 2.16 s | 1.25, 7.11, 2.45, 3.30, 1.87 s |
+   | runc p50: getpid, fork+exec | 146 ns, 1.33 ms | 128 ns, 1.06 ms |
+   | A/A intervals containing 0 (13 tasks) | 12 of 13 | 13 of 13 |
+
+   The A/A noise floor behaves as the method intends; absolute runc times move by up to about 25% (pip install
+   slower, the rest faster), so the absolute columns in the README are this machine's on that day. Failed reps: 0.
+3. **CI drives real runc.** A `harness-runc` job builds the harness, binds the root with `bench/rootfs.sh` and
+   runs a 3-rep cold start with runc in every arm, so the bundle, the CLI driver and the results file are tested end
+   to end on each PR (not the README's numbers).
+
+### How it was verified
+
+```
+$ bench/prepare.sh                                  # corpus: 41M repos, 19M wheels, Lua source, micro binary
+$ bench/rootfs.sh
+$ go build -o /tmp/sbb ./cmd/sandboxbench
+$ /tmp/sbb coldstart -runsc "$PWD/bench/runc-as-runsc.sh" -out /tmp/sb-runc     # 40 reps
+$ /tmp/sbb workloads -runsc "$PWD/bench/runc-as-runsc.sh" -out /tmp/sb-runc     # 8 reps, 605 s, 0 failed reps
+```
+
+(The 40- and 8-rep runs used an identical wrapper script in /tmp, written before it was added to the repo as
+`bench/runc-as-runsc.sh`; a 3-rep cold start was then run with the committed script.) Before the `rootfs.sh` fix
+the first command failed with the error above. `go test ./...` and `go vet` unchanged
+(no Go code changed); the new CI job's result is on this PR.
+
+### Not verified
+
+**gVisor.** Building `runsc` from gVisor's `go` branch at the README's commit `ace9117e` was not allowed in this
+session (compiling and running an externally fetched container runtime needs the owner's approval), so the
+runsc columns, the runsc/runc ratios, the isolation, memory and snapshot results remain un-re-measured. With a
+`runsc` binary at `/usr/local/bin/runsc` the remaining experiments can be run; that was not tried here.
+
+### Files touched
+
+`bench/rootfs.sh`, `bench/runc-as-runsc.sh` (new), `.github/workflows/ci.yml`, `IMPROVEMENTS.md`.
