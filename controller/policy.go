@@ -310,21 +310,6 @@ func median(x []float64) float64 {
 	return (s[len(s)/2-1] + s[len(s)/2]) / 2
 }
 
-func meanSD(x []float64) (float64, float64) {
-	if len(x) == 0 {
-		return 0, 0
-	}
-	var s, ss float64
-	for _, v := range x {
-		s += v
-	}
-	m := s / float64(len(x))
-	for _, v := range x {
-		ss += (v - m) * (v - m)
-	}
-	return m, math.Sqrt(ss / float64(len(x)))
-}
-
 func (r Result) String() string {
 	return fmt.Sprintf("%-17s knob=%-6g p50=%6.0fms p99=%7.0fms overSLO=%5.2f%% idle=%6.1fh/day rlstall=%6.0fs/day created=%.0f/day",
 		r.Policy, r.Knob, r.P50Ms, r.P99Ms, 100*r.OverSLO, r.IdleHoursDay, r.RLStallSecDay, r.CreatedPerDay)

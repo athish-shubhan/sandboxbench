@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"sort"
 )
 
 // Minimal subset of the OCI runtime spec (github.com/opencontainers/runtime-spec).
@@ -160,8 +161,15 @@ func New(o Options) Spec {
 		s.Mounts = append(s.Mounts, Mount{Destination: "/work", Type: "bind", Source: o.Work, Options: []string{"rbind", "rw"}})
 		s.Process.Cwd = "/work"
 	}
-	for dst, src := range o.Binds {
-		s.Mounts = append(s.Mounts, Mount{Destination: dst, Type: "bind", Source: src, Options: []string{"rbind", "ro"}})
+	// Map order is random; sorting makes config.json reproducible and mounts
+	// a parent directory before anything bound beneath it.
+	dsts := make([]string, 0, len(o.Binds))
+	for dst := range o.Binds {
+		dsts = append(dsts, dst)
+	}
+	sort.Strings(dsts)
+	for _, dst := range dsts {
+		s.Mounts = append(s.Mounts, Mount{Destination: dst, Type: "bind", Source: o.Binds[dst], Options: []string{"rbind", "ro"}})
 	}
 	if o.MemLimit > 0 || o.PidsLimit > 0 {
 		s.Linux.Resources = &Resources{}

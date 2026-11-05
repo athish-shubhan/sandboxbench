@@ -70,6 +70,19 @@ bench/             prepare.sh (corpus), rootfs.sh, run_all.sh, plot.py
 docs/METHOD.md     how noise is controlled, what each number means, threats to validity
 ```
 
+## Quick start
+
+Needs Go 1.24+. The tests and the warm-pool simulation run from a clean clone without root, runc or runsc:
+
+```
+git clone https://github.com/athish-shubhan/sandboxbench && cd sandboxbench
+go test ./...
+go run ./cmd/poolsim -coldstart results/coldstart.json -out /tmp/pool.jsonl   # about 35 s
+cmp results/pool.jsonl /tmp/pool.jsonl                                        # identical to the committed results
+```
+
+The runtime measurements (sections 1 to 6) need the setup under Reproduce. CI (`.github/workflows/ci.yml`) runs gofmt, `go vet`, `go test -race`, the simulation check above and golangci-lint on every pull request.
+
 ## Reproduce
 
 ```
