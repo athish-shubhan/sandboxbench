@@ -29,6 +29,25 @@ jobs:
           go run ./cmd/poolsim -coldstart results/coldstart.json -out /tmp/pool.jsonl > /dev/null
           cmp results/pool.jsonl /tmp/pool.jsonl
 
+  # Drives real runc through the harness (no gVisor on CI runners: the runsc
+  # arm is runc via bench/runc-as-runsc.sh). Checks the bundle, the CLI
+  # driver and the results file end to end, not the README's numbers.
+  harness-runc:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: cold start with runc, 3 reps
+        run: |
+          go build -o bin/sandboxbench ./cmd/sandboxbench
+          mkdir -p corpus
+          sudo bench/rootfs.sh
+          sudo RUNC="$(command -v runc)" bin/sandboxbench coldstart -runc "$(command -v runc)" \
+            -runsc "$PWD/bench/runc-as-runsc.sh" -reps 3 -out /tmp/sb
+          jq -e '.result.summary.runc.claim_to_first_exec_ms.n == 3' /tmp/sb/coldstart.json
+
   lint:
     runs-on: ubuntu-latest
     steps:
