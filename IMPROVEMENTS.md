@@ -231,7 +231,9 @@ $ /tmp/sbb coldstart -runsc "$PWD/bench/runc-as-runsc.sh" -out /tmp/sb-runc     
 $ /tmp/sbb workloads -runsc "$PWD/bench/runc-as-runsc.sh" -out /tmp/sb-runc     # 8 reps, 605 s, 0 failed reps
 ```
 
-Before the `rootfs.sh` fix the first command failed with the error above. `go test ./...` and `go vet` unchanged
+(The 40- and 8-rep runs used an identical wrapper script in /tmp, written before it was added to the repo as
+`bench/runc-as-runsc.sh`; a 3-rep cold start was then run with the committed script.) Before the `rootfs.sh` fix
+the first command failed with the error above. `go test ./...` and `go vet` unchanged
 (no Go code changed); the new CI job's result is on this PR.
 
 ### Not verified
@@ -239,7 +241,7 @@ Before the `rootfs.sh` fix the first command failed with the error above. `go te
 **gVisor.** Building `runsc` from gVisor's `go` branch at the README's commit `ace9117e` was not allowed in this
 session (compiling and running an externally fetched container runtime needs the owner's approval), so the
 runsc columns, the runsc/runc ratios, the isolation, memory and snapshot results remain un-re-measured. With a
-`runsc` binary at `/usr/local/bin/runsc`, `bench/run_all.sh` should now run end to end.
+`runsc` binary at `/usr/local/bin/runsc` the remaining experiments can be run; that was not tried here.
 
 ### Files touched
 
