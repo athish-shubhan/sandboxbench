@@ -17,6 +17,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"sort"
 	"strings"
 	"time"
 
@@ -413,10 +414,15 @@ type taskSummary struct {
 	AAOverRun stats.Ratio              `json:"runc_aa_over_runc"`
 }
 
+// summarizeWork summarises each task per arm and computes runsc/runc and the
+// A/A runc-aa/runc ratios. Ratios are paired by repetition (rep i of both
+// arms ran back to back) over the reps where both arms succeeded. The old
+// code paired by index whenever the arms had equally many successes, which
+// mismatches reps if different reps failed in different arms.
 func summarizeWork(tasks []work.Task, samples []Sample) []taskSummary {
 	var out []taskSummary
 	for i, t := range tasks {
-		v := map[string][]float64{}
+		byRep := map[string]map[int]float64{}
 		fail := map[string]int{}
 		for _, s := range samples {
 			if s.Task != t.Name {
@@ -430,25 +436,56 @@ func summarizeWork(tasks []work.Task, samples []Sample) []taskSummary {
 			if t.Kind == "micro" {
 				x = s.NsPerOp
 			}
-			v[s.Arm] = append(v[s.Arm], x)
+			if byRep[s.Arm] == nil {
+				byRep[s.Arm] = map[int]float64{}
+			}
+			byRep[s.Arm][s.Rep] = x
 		}
 		ts := taskSummary{Task: t.Name, Kind: t.Kind, Metric: "wall_sec", ByArm: map[string]stats.Summary{}, Failures: fail}
 		if t.Kind == "micro" {
 			ts.Metric = "ns_per_op"
 		}
-		for a, x := range v {
-			ts.ByArm[a] = stats.Summarize(x)
+		for a, m := range byRep {
+			ts.ByArm[a] = stats.Summarize(inRepOrder(m, nil))
 		}
-		paired := len(v["runc"]) == len(v["runsc"]) && len(v["runc"]) == len(v["runc-aa"])
-		if len(v["runc"]) > 1 && len(v["runsc"]) > 1 {
-			ts.RunscRunc = stats.MedianRatio(v["runc"], v["runsc"], paired, uint64(10+i))
+		if a, b := pairedByRep(byRep["runc"], byRep["runsc"]); len(a) > 1 {
+			ts.RunscRunc = stats.MedianRatio(a, b, true, uint64(10+i))
 		}
-		if len(v["runc"]) > 1 && len(v["runc-aa"]) > 1 {
-			ts.AAOverRun = stats.MedianRatio(v["runc"], v["runc-aa"], paired, uint64(100+i))
+		if a, b := pairedByRep(byRep["runc"], byRep["runc-aa"]); len(a) > 1 {
+			ts.AAOverRun = stats.MedianRatio(a, b, true, uint64(100+i))
 		}
 		out = append(out, ts)
 	}
 	return out
+}
+
+// inRepOrder returns m's values sorted by rep, keeping only reps in keep
+// (all reps when keep is nil).
+func inRepOrder(m map[int]float64, keep map[int]bool) []float64 {
+	reps := make([]int, 0, len(m))
+	for r := range m {
+		if keep == nil || keep[r] {
+			reps = append(reps, r)
+		}
+	}
+	sort.Ints(reps)
+	out := make([]float64, len(reps))
+	for i, r := range reps {
+		out[i] = m[r]
+	}
+	return out
+}
+
+// pairedByRep returns the two arms' values for the reps both completed, in
+// rep order, so index i is the same rep in both.
+func pairedByRep(a, b map[int]float64) ([]float64, []float64) {
+	both := map[int]bool{}
+	for r := range a {
+		if _, ok := b[r]; ok {
+			both[r] = true
+		}
+	}
+	return inRepOrder(a, both), inRepOrder(b, both)
 }
 
 func tail(s string, n int) string {
