@@ -84,3 +84,60 @@ IDENTICAL
 `internal/oci/oci.go`, `internal/oci/oci_test.go` (new), `cmd/sandboxbench/main.go`, `cmd/sandboxbench/snapshot.go`,
 `cmd/poolsim/main.go`, `controller/policy.go`, `.github/workflows/ci.yml` (new), `.golangci.yml` (new), `README.md`,
 `IMPROVEMENTS.md` (new).
+
+## Round 2 (2026-11-05): README tables recomputed from the committed raw samples; ratios paired by repetition
+
+Stacked on round 1 (`improve/round-1`).
+
+### What changed
+
+1. **The README's workload and lifecycle numbers are now checked in CI.** `results/workloads.json` and
+   `results/coldstart.json` contain every raw sample next to the summary. Two new tests recompute the summaries
+   from the raw samples with the harness's own code and compare them with the committed summaries: every
+   median, percentile, ratio and bootstrap interval matches (relative tolerance 1e-12). So the README's
+   workload table (for example git clone +150% [+142, +162], A/A -8% [-10, +4]) and the lifecycle ratio
+   (claim to first exec 3.3x, CI 3.1 to 3.5) are pinned to the data they came from. This needs no runc or runsc.
+2. **Bug: workload ratios could pair different repetitions.** `summarizeWork` used a paired bootstrap whenever
+   the arms had the same number of successful reps, and paired by position. If runc failed rep 0 and runsc failed
+   rep 7, position i was rep i+1 for runc and rep i for runsc. Ratios are now paired by repetition over the reps
+   both arms completed. On a constructed case where every rep's true ratio is 2, the old code reported
+   1.6 [0.67, 3.33] and the new code 2 [2, 2]. The committed run had no failed reps (312 samples, 0 failures),
+   so its numbers are unchanged, as the test in item 1 shows.
+
+### How it was verified
+
+```
+$ go test -count=1 -v ./cmd/sandboxbench
+--- PASS: TestCommittedWorkloadSummaryReproduces
+--- PASS: TestSummarizePairsByRep
+--- PASS: TestCommittedColdstartSummaryReproduces
+# on round 1's summarizeWork:
+summary_test.go:92: paired by rep, every pair has ratio 2 exactly: {Ratio:1.6 Lo:0.6666666666666666 Hi:3.3333333333333335}
+```
+
+Recomputed agent-workload rows (runc p50, runsc p50, runsc vs runc, A/A), identical to the README table:
+
+```
+git_clone       1.39 s  3.47 s  +150% [+142, +162]  A/A -8% [-10, +4]
+pip_install     5.45 s  9.75 s   +79% [+71, +89]    A/A +2% [-3, +9]
+pytest          2.93 s  4.05 s   +38% [+33, +45]    A/A +1% [-5, +5]
+compile_c       3.80 s  9.67 s  +155% [+142, +161]  A/A +6% [-1, +10]
+python_imports  2.16 s  4.30 s   +99% [+83, +112]   A/A -2% [-11, +4]
+```
+
+```
+$ go test -count=1 -v ./... | grep -E '^--- ' | awk '{print $2}' | sort | uniq -c    # round 1 -> this round
+     16 PASS: -> 19 PASS:
+$ go test -race -count=1 ./... ; golangci-lint run ./...    # all ok; 0 issues
+```
+
+`cmd/sandboxbench` coverage 0% -> 11.5% (the rest drives runc and runsc).
+
+### Not verified
+
+The raw samples themselves were not re-measured (needs runsc, see round 1). The tests show the published
+summaries follow from the published samples, not that a new run would give the same samples.
+
+### Files touched
+
+`cmd/sandboxbench/main.go`, `cmd/sandboxbench/summary_test.go` (new), `IMPROVEMENTS.md`.
