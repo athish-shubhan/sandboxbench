@@ -86,7 +86,7 @@ func (r Runtime) Delete(ctx context.Context, id string) (time.Duration, error) {
 // Teardown kills and deletes, returning the total time.
 func (r Runtime) Teardown(ctx context.Context, id string) (time.Duration, error) {
 	t := time.Now()
-	r.Kill(ctx, id)
+	_, _ = r.Kill(ctx, id) // fails when the container already exited; delete --force decides
 	_, err := r.Delete(ctx, id)
 	return time.Since(t), err
 }
@@ -135,7 +135,7 @@ func (r Runtime) Run(ctx context.Context, id, bundle string) (ExecResult, error)
 		res.Code = ee.ExitCode()
 		err = nil
 	}
-	r.Delete(context.Background(), id)
+	_, _ = r.Delete(context.Background(), id) // "run" normally deletes it already
 	return res, err
 }
 
@@ -149,7 +149,9 @@ func (r Runtime) StatePid(ctx context.Context, id string) int {
 	var st struct {
 		Pid int `json:"pid"`
 	}
-	json.Unmarshal(out, &st)
+	if json.Unmarshal(out, &st) != nil {
+		return 0
+	}
 	return st.Pid
 }
 
@@ -170,8 +172,7 @@ func (r Runtime) Pids(extra ...int) []int {
 		if err != nil {
 			continue
 		}
-		cl := strings.ReplaceAll(string(b), "\x00", " ")
-		if strings.Contains(cl, r.Root) && !strings.Contains(cl, " exec ") && !strings.Contains(cl, " create ") {
+		if belongsTo(strings.Split(strings.TrimRight(string(b), "\x00"), "\x00"), r.Root) {
 			roots = append(roots, pid)
 		}
 		st, err := os.ReadFile(fmt.Sprintf("/proc/%d/stat", pid))
@@ -182,8 +183,9 @@ func (r Runtime) Pids(extra ...int) []int {
 		if i := strings.LastIndexByte(s, ')'); i > 0 {
 			var state string
 			var ppid int
-			fmt.Sscan(s[i+2:], &state, &ppid)
-			parent[pid] = ppid
+			if _, err := fmt.Sscan(s[i+2:], &state, &ppid); err == nil {
+				parent[pid] = ppid
+			}
 		}
 	}
 	in := map[int]bool{}
@@ -206,4 +208,39 @@ func (r Runtime) Pids(extra ...int) []int {
 		out = append(out, p)
 	}
 	return out
+}
+
+// belongsTo reports whether a process with these command-line arguments is a
+// long-lived process of the runtime whose state directory is root: some
+// argument names root itself or a path under it (runsc passes --root=<root>
+// and paths below it to its sandbox and gofer). Short-lived "exec" and
+// "create" invocations of the CLI are not sandbox processes.
+//
+// A plain substring test is not enough: the runc arm's root ".../runc" is a
+// prefix of the A/A arm's ".../runc-aa", so runc would also count the A/A
+// arm's processes.
+func belongsTo(args []string, root string) bool {
+	root = strings.TrimRight(root, "/")
+	if root == "" {
+		return false
+	}
+	found := false
+	for _, a := range args {
+		if a == "exec" || a == "create" {
+			return false
+		}
+		for i := strings.Index(a, root); i >= 0 && !found; {
+			end := i + len(root)
+			if end == len(a) || a[end] == '/' {
+				found = true
+				break
+			}
+			j := strings.Index(a[end:], root)
+			if j < 0 {
+				break
+			}
+			i = end + j
+		}
+	}
+	return found
 }

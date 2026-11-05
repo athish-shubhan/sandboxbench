@@ -52,7 +52,9 @@ func main() {
 		os.Exit(2)
 	}
 	cmd := os.Args[1]
-	fs.Parse(os.Args[2:])
+	if err := fs.Parse(os.Args[2:]); err != nil {
+		log.Fatal(err)
+	}
 	c, err := filepath.Abs(*corpus)
 	if err != nil {
 		log.Fatal(err)
@@ -62,11 +64,11 @@ func main() {
 	aa := rt.Runc(*runcBin, filepath.Join(*state, "runc-aa"))
 	aa.Name = "runc-aa"
 	b.arms = []rt.Runtime{runc, aa, rt.Runsc(*runscBin, filepath.Join(*state, "runsc"))}
-	for _, a := range b.arms {
-		os.MkdirAll(a.Root, 0o755)
+	for _, d := range []string{b.arms[0].Root, b.arms[1].Root, b.arms[2].Root, *workDir, *outDir} {
+		if err := os.MkdirAll(d, 0o755); err != nil {
+			log.Fatal(err)
+		}
 	}
-	os.MkdirAll(*workDir, 0o755)
-	os.MkdirAll(*outDir, 0o755)
 	run := map[string]func() (any, error){
 		"coldstart": func() (any, error) { return b.coldstart(pick(*reps, 40)) },
 		"exec":      func() (any, error) { return b.execLatency(pick(*reps, 100)) },
@@ -91,7 +93,11 @@ func main() {
 			log.Fatalf("%s: %v", n, err)
 		}
 		out := map[string]any{"experiment": n, "env": environment(b.arms), "elapsed_sec": time.Since(t).Seconds(), "result": res}
-		bb, _ := json.MarshalIndent(out, "", "  ")
+		bb, err := json.MarshalIndent(out, "", "  ")
+		if err != nil {
+			// never lose a finished experiment to an encoding error silently
+			log.Fatalf("%s: encode results: %v", n, err)
+		}
 		if err := os.WriteFile(filepath.Join(*outDir, n+".json"), bb, 0o644); err != nil {
 			log.Fatal(err)
 		}
@@ -204,7 +210,10 @@ func (b *bench) coldstart(n int) (any, error) {
 	// warm-up: first runs pay for page-cache misses on the runtime binaries
 	for _, a := range b.arms {
 		if s, _, _, err := b.start(ctx, a, false, 0, 0); err == nil {
-			s.sh(ctx, "true")
+			if _, err := s.sh(ctx, "true"); err != nil {
+				s.stop()
+				return nil, fmt.Errorf("warm-up %s: %w", a.Name, err)
+			}
 			s.stop()
 		} else {
 			return nil, err
@@ -285,7 +294,9 @@ func (b *bench) execLatency(n int) (any, error) {
 		}
 		boxes = append(boxes, s)
 		R[a.Name] = &res{}
-		s.r.Exec(ctx, s.id, nil, "", "/bin/true")
+		if _, err := s.r.Exec(ctx, s.id, nil, "", "/bin/true"); err != nil { // warm-up
+			return nil, fmt.Errorf("warm-up exec %s: %w", a.Name, err)
+		}
 	}
 	defer func() {
 		for _, s := range boxes {
@@ -373,7 +384,12 @@ func (b *bench) workloads(n int) (any, error) {
 					var m struct {
 						Ns float64 `json:"ns_per_op"`
 					}
-					json.Unmarshal([]byte(strings.TrimSpace(e.Stdout)), &m)
+					// A micro-benchmark that printed no ns_per_op is a failed
+					// rep; recording 0 ns would pull the median down.
+					if err := json.Unmarshal([]byte(strings.TrimSpace(e.Stdout)), &m); (err != nil || m.Ns <= 0) && e.Code == 0 {
+						e.Code, smp.Code = -1, -1
+						smp.Tail = "no ns_per_op in output: " + smp.Tail
+					}
 					smp.NsPerOp = m.Ns
 				}
 				if e.Code != 0 {
@@ -450,7 +466,9 @@ func meminfo(key string) int64 {
 	for _, l := range strings.Split(string(b), "\n") {
 		if strings.HasPrefix(l, key+":") {
 			var v int64
-			fmt.Sscan(strings.TrimSpace(strings.TrimPrefix(l, key+":")), &v)
+			if _, err := fmt.Sscan(strings.TrimSpace(strings.TrimPrefix(l, key+":")), &v); err != nil {
+				return 0
+			}
 			return v * 1024
 		}
 	}
@@ -465,16 +483,24 @@ func pss(pid int) int64 {
 	for _, l := range strings.Split(string(b), "\n") {
 		if strings.HasPrefix(l, "Pss:") {
 			var v int64
-			fmt.Sscan(strings.TrimSpace(strings.TrimPrefix(l, "Pss:")), &v)
+			if _, err := fmt.Sscan(strings.TrimSpace(strings.TrimPrefix(l, "Pss:")), &v); err != nil {
+				return 0
+			}
 			return v * 1024
 		}
 	}
 	return 0
 }
 
+// dropCaches is best effort (it needs root); a failure is logged because
+// the MemAvailable deltas are noisier without it.
 func dropCaches() {
-	exec.Command("sync").Run()
-	os.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0o200)
+	if err := exec.Command("sync").Run(); err != nil {
+		log.Printf("   sync: %v", err)
+	}
+	if err := os.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0o200); err != nil {
+		log.Printf("   drop_caches: %v (MemAvailable deltas will be noisier)", err)
+	}
 	time.Sleep(500 * time.Millisecond)
 }
 

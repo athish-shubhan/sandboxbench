@@ -85,7 +85,7 @@ func waitAdvance(path string, timeout time.Duration) (time.Duration, error) {
 
 func dirSize(dir string) int64 {
 	var n int64
-	filepath.Walk(dir, func(_ string, fi os.FileInfo, err error) error {
+	_ = filepath.Walk(dir, func(_ string, fi os.FileInfo, err error) error {
 		if err == nil && !fi.IsDir() {
 			n += fi.Size()
 		}
@@ -128,12 +128,12 @@ func (b *bench) snapshot(n int) (any, error) {
 			}
 			if _, err := r.Start(ctx, id); err != nil {
 				res.Errors = append(res.Errors, err.Error())
-				r.Teardown(ctx, id)
+				_, _ = r.Teardown(ctx, id) // already failed; teardown is best effort
 				continue
 			}
 			if _, err := waitFile(filepath.Join(wd, "ready"), 60*time.Second); err != nil {
 				res.Errors = append(res.Errors, err.Error())
-				r.Teardown(ctx, id)
+				_, _ = r.Teardown(ctx, id) // already failed; teardown is best effort
 				continue
 			}
 			add("cold", ms(time.Since(t)))
@@ -141,7 +141,9 @@ func (b *bench) snapshot(n int) (any, error) {
 				f, _ := strconv.ParseFloat(strings.TrimSpace(string(b)), 64)
 				res.ImportSec = append(res.ImportSec, f)
 			}
-			waitAdvance(filepath.Join(wd, "hb"), 5*time.Second)
+			if _, err := waitAdvance(filepath.Join(wd, "hb"), 5*time.Second); err != nil {
+				res.Errors = append(res.Errors, "heartbeat before checkpoint: "+err.Error())
+			}
 
 			// pause / resume
 			tp := time.Now()
@@ -159,17 +161,21 @@ func (b *bench) snapshot(n int) (any, error) {
 
 			if r.Name == "runsc" {
 				img := filepath.Join(*state, "images", id)
-				os.RemoveAll(img)
-				os.MkdirAll(img, 0o755)
+				_ = os.RemoveAll(img)
+				if err := os.MkdirAll(img, 0o755); err != nil {
+					return nil, err
+				}
 				tc := time.Now()
 				if _, err := r.Cmd(ctx, "checkpoint", "--image-path="+img, id); err != nil {
 					res.Errors = append(res.Errors, err.Error())
-					r.Teardown(ctx, id)
+					_, _ = r.Teardown(ctx, id) // already failed; teardown is best effort
 					continue
 				}
 				add("checkpoint", ms(time.Since(tc)))
 				add("image_mib", float64(dirSize(img))/(1<<20))
-				r.Delete(ctx, id)
+				if _, err := r.Delete(ctx, id); err != nil {
+					res.Errors = append(res.Errors, err.Error())
+				}
 				// restore into a new container with the same bundle (same /work mount)
 				id2 := id + "-r"
 				tr := time.Now()
@@ -184,10 +190,12 @@ func (b *bench) snapshot(n int) (any, error) {
 				} else {
 					add("restore_ready", ms(time.Since(tr)))
 				}
-				r.Teardown(ctx, id2)
+				if _, err := r.Teardown(ctx, id2); err != nil {
+					res.Errors = append(res.Errors, err.Error())
+				}
 				os.RemoveAll(img)
-			} else {
-				r.Teardown(ctx, id)
+			} else if _, err := r.Teardown(ctx, id); err != nil {
+				res.Errors = append(res.Errors, err.Error())
 			}
 			os.RemoveAll(bundle)
 			os.RemoveAll(wd)
