@@ -4,7 +4,7 @@ A controlled benchmark of agent-sandbox runtimes (runc vs gVisor) on agent-shape
 
 ## Results
 
-Measured on one 2-vCPU VM without KVM (sections 1 to 6), and simulated (section 7). Full tables: [`results/SUMMARY.md`](results/SUMMARY.md). Method and threats to validity: [`docs/METHOD.md`](docs/METHOD.md).
+Measured on one 2-vCPU VM without KVM (sections 1 to 6), and simulated (section 7). Full tables: [`results/SUMMARY.md`](results/SUMMARY.md). Method and threats to validity: [`docs/METHOD.md`](docs/METHOD.md). Package layout: [`docs/architecture.md`](docs/architecture.md).
 
 **Wall-clock overhead of gVisor (runsc, systrap) vs runc**, 8 interleaved repetitions, 95% paired bootstrap CI, and the A/A noise floor (runc vs an identical runc):
 

@@ -141,3 +141,45 @@ summaries follow from the published samples, not that a new run would give the s
 ### Files touched
 
 `cmd/sandboxbench/main.go`, `cmd/sandboxbench/summary_test.go` (new), `IMPROVEMENTS.md`.
+
+## Round 3 (2026-11-05): runtime driver and workload corpus tested; architecture doc
+
+Stacked on round 2 (`improve/round-2`).
+
+### What changed
+
+1. **Tests for the runtime driver (`internal/rt`) against a fake OCI runtime.** A shell script stands in for
+   runc/runsc and records its arguments, so the exact command lines are pinned without root: global flags before
+   the subcommand (`--root`, and `--platform=systrap --network=none` plus extra flags for runsc), create/start/
+   pause/kill/delete, `exec --env ... --cwd ... <id> <cmd>`, and `run` followed by `delete --force`. Also: a
+   failing lifecycle command's error includes the runtime's stderr; a workload's non-zero exit is returned as data
+   (exit code 7, stdout, stderr), not as a harness error; a context deadline kills a hung exec and it is reported
+   as a non-zero exit; `StatePid` parses `state` and returns 0 when the runtime is missing.
+2. **Tests for the workload corpus (`internal/work`)**: task and check names are unique (they are keys in
+   `results/*.json`), every task is complete, micro tasks run the micro-benchmark binary, and every Python
+   isolation check parses (`ast.parse`); a syntax error would otherwise only show up as a failed check after a
+   full run. No problem was found; these tests pin the corpus.
+3. **`docs/architecture.md`**: a mermaid diagram from the experiments through the arm rotation, the OCI bundle,
+   the CLI driver and the statistics to `results/`, and the pool simulator fed by the measured cold starts; a
+   package table; what CI checks without root or runsc. Linked from the README. Rendered locally with
+   `@mermaid-js/mermaid-cli` 11.4.2 without errors.
+
+### How it was verified
+
+```
+$ go test -count=1 -v ./... | grep -E '^--- ' | awk '{print $2}' | sort | uniq -c    # round 2 -> this round
+     19 PASS: -> 27 PASS:
+$ go test -race -count=1 ./...      # all ok
+$ golangci-lint run ./...           # 0 issues
+```
+
+Coverage: `internal/rt` 42.7% -> 94.9%, `internal/work` 0% -> 100%.
+
+### Not verified
+
+The driver is tested against a stand-in, not against runc or runsc themselves (no runsc build here; see round 1).
+
+### Files touched
+
+`internal/rt/cli_test.go` (new), `internal/work/work_test.go` (new), `docs/architecture.md` (new), `README.md`,
+`IMPROVEMENTS.md`.
