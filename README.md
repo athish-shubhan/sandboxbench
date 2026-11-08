@@ -4,7 +4,7 @@ A controlled benchmark of agent-sandbox runtimes (runc vs gVisor) on agent-shape
 
 ## Results
 
-Measured on one 2-vCPU VM without KVM (sections 1 to 6), and simulated (section 7). Full tables: [`results/SUMMARY.md`](results/SUMMARY.md). Method and threats to validity: [`docs/METHOD.md`](docs/METHOD.md).
+Measured on one 2-vCPU VM without KVM (sections 1 to 6; single machine, 8 to 40 repetitions per cell, so the intervals describe run-to-run noise on that VM, not other hardware), and simulated (section 7). Full tables: [`results/SUMMARY.md`](results/SUMMARY.md). Method and threats to validity: [`docs/METHOD.md`](docs/METHOD.md).
 
 **Wall-clock overhead of gVisor (runsc, systrap) vs runc**, 8 interleaved repetitions, 95% paired bootstrap CI, and the A/A noise floor (runc vs an identical runc):
 
@@ -73,10 +73,10 @@ docs/METHOD.md     how noise is controlled, what each number means, threats to v
 ## Reproduce
 
 ```
-# root, runc, and runsc on PATH (runsc built here from gVisor's go branch: go build ./runsc)
+# root, runc, and runsc on PATH (root is needed; runsc built here from gVisor's go branch: go build ./runsc)
 bench/prepare.sh      # once: git mirrors, wheels, Lua source, micro-benchmark binary
 bench/run_all.sh      # about 25 minutes: results/*.json, pool.jsonl, SUMMARY.md, figures
-go test ./...
+go test -race ./...
 ```
 
 ## What is not here
@@ -87,18 +87,3 @@ go test ./...
 - **The warm-pool controller is a simulation and a policy**, not a controller running against `SandboxWarmPool` objects. The workload is synthetic (shapes of eval and RL claimers), not a production trace.
 - **Upstream**: nothing was contributed to kubernetes-sigs/agent-sandbox. The natural pieces are issue #403 (benchmark JSON output with an A/A noise floor and paired CIs, which is what this harness emits) and a warm-pool sizing proposal with launch hints. Claim them only once merged.
 - runsc is built from source at gVisor's go-branch commit ace9117e (the last one that builds with the Go 1.24 toolchain available here), so `runsc --version` prints `VERSION_MISSING`.
-
-## Resume bullets (numbers from `results/`; keep "simulated" on the pool bullet)
-
-- Built SandboxBench, a Go benchmark of runc and gVisor (systrap) agent sandboxes on five agent workloads with an A/A noise floor and paired bootstrap CIs, finding gVisor adds 38% (pytest) to 155% (C build) wall-clock, 3.3x claim-to-first-exec latency (232 vs 70 ms) and 13 MiB per idle sandbox, traced to 35x syscall and 9.7x fork+exec costs.
-- Measured warm-state restore for agent sandboxes: a gVisor checkpoint (438 ms, 14 MiB) of a sandbox with numpy, pandas and matplotlib imported restored to running in 466 ms p50, 2.8x faster than a cold gVisor start (1,328 ms) and on par with a cold runc start (468 ms).
-- Found that gVisor turns host cgroup limits into sandbox kills: memory and pids limits that stop one process under runc took down the whole runsc sandbox, so limits must be sized for the Sentry.
-- Designed a predictive warm-pool policy (per-minute newsvendor demand, batch-period detection, launch hints from eval and RL schedulers) that in simulation held p99 claim latency at 50 ms through 100-sandbox eval launches and 128-sandbox RL steps with 81% fewer idle sandbox-hours than HPA on claim rate at the same p99 (454 vs 2,411 per day).
-
-## Interview defence
-
-- *Why is gVisor slow on IO-heavy work?* Every syscall traps out of the application into the Sentry (35x on a bare `getpid` here), and file operations outside the sandbox's own memory-backed filesystems go through the gofer or Sentry-opened host fds with extra validation: `stat` on the bind mount is 13.5x, on the internal tmpfs 6.9x. Bulk sequential I/O amortises this (1.3x to 2.2x); many small operations do not.
-- *What is systrap?* gVisor's default platform since 2023: application threads run under a seccomp filter that returns `SECCOMP_RET_TRAP` for syscalls; a stub process per address space handles the signal and hands the syscall to the Sentry through shared memory, avoiding ptrace's context-switch cost and not needing KVM.
-- *How do you size a pool for step-function bursts?* Rate-based autoscalers see a step only after it happened. Separate steady demand (forecast a quantile per time of day; the quantile is the newsvendor critical ratio between a claim waiting and a sandbox idling) from batch claimers (predict their period, or better, have the scheduler announce them), and pre-warm one creation lead time ahead, where lead time includes the creation-concurrency limit (128 sandboxes at 32 in flight take about 10 s).
-- *Restore from a snapshot or keep a warm pool?* A warm pool pays idle memory for every sandbox it holds; restore pays one image per warm state (14 MiB here) and about 0.47 s per claim. Restore wins when warm states are expensive to build (imports, a cloned repo) and claims can wait half a second; a pool wins under a 50 ms claim SLO. The measured 466 ms is time until the process runs, not until its working set is back in memory, which is why REAP records and prefetches the working set and FaaSnap loads it concurrently.
-- *Security model, gVisor vs microVMs?* gVisor puts a user-space kernel between the app and the host kernel (a much smaller host syscall surface, same host kernel underneath); a microVM puts a guest kernel behind hardware virtualisation (a VMM and KVM as the boundary). gVisor needs no KVM and starts in hundreds of milliseconds; microVMs pay for memory and a guest kernel but run unmodified kernels and syscalls at native speed inside the guest.
