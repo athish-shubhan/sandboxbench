@@ -47,17 +47,23 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer f.Close()
+	defer func() {
+		if err := f.Close(); err != nil {
+			log.Fatal(err)
+		}
+	}()
 	enc := json.NewEncoder(f)
 	emit := func(r controller.Result, knob float64) {
 		r.Knob = knob
 		fmt.Println(r)
-		enc.Encode(struct {
+		if err := enc.Encode(struct {
 			controller.Result
 			Seed          uint64  `json:"seed"`
 			NightlyJitter float64 `json:"nightly_jitter_s"`
 			SLO           float64 `json:"slo_s"`
-		}{r, *seed, *jitter, *slo})
+		}{r, *seed, *jitter, *slo}); err != nil {
+			log.Fatal(err)
+		}
 	}
 	const from = 7
 	for _, n := range []int{0, 25, 50, 100, 150, 200, 300, 400} {

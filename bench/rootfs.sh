@@ -7,6 +7,11 @@
 # and runsc keeps file contents identical across runtimes.
 set -euo pipefail
 R=${1:-/var/lib/sandboxbench/rootfs}
+# The bundle bind-mounts the corpus at /corpus and a per-sandbox directory at
+# /work. On a read-only root the mount points must already exist, so create
+# them (empty) on the host before the root is bound; runc otherwise fails
+# with "mkdirat .../rootfs/corpus: read-only file system".
+mkdir -p /corpus /work
 mkdir -p "$R"
 if ! mountpoint -q "$R"; then
   mount --bind / "$R"

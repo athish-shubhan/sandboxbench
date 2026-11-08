@@ -4,7 +4,7 @@ A controlled benchmark of agent-sandbox runtimes (runc vs gVisor) on agent-shape
 
 ## Results
 
-Measured on one 2-vCPU VM without KVM (sections 1 to 6; single machine, 8 to 40 repetitions per cell, so the intervals describe run-to-run noise on that VM, not other hardware), and simulated (section 7). Full tables: [`results/SUMMARY.md`](results/SUMMARY.md). Method and threats to validity: [`docs/METHOD.md`](docs/METHOD.md).
+Measured on one 2-vCPU VM without KVM (sections 1 to 6; single machine, 8 to 40 repetitions per cell, so the intervals describe run-to-run noise on that VM, not other hardware), and simulated (section 7). Full tables: [`results/SUMMARY.md`](results/SUMMARY.md). Method and threats to validity: [`docs/METHOD.md`](docs/METHOD.md). Package layout: [`docs/architecture.md`](docs/architecture.md).
 
 **Wall-clock overhead of gVisor (runsc, systrap) vs runc**, 8 interleaved repetitions, 95% paired bootstrap CI, and the A/A noise floor (runc vs an identical runc):
 
@@ -69,6 +69,19 @@ cmd/poolsim        runs every policy over two simulated weeks
 bench/             prepare.sh (corpus), rootfs.sh, run_all.sh, plot.py
 docs/METHOD.md     how noise is controlled, what each number means, threats to validity
 ```
+
+## Quick start
+
+Needs Go 1.24+. The tests and the warm-pool simulation run from a clean clone without root, runc or runsc:
+
+```
+git clone https://github.com/athish-shubhan/sandboxbench && cd sandboxbench
+go test ./...
+go run ./cmd/poolsim -coldstart results/coldstart.json -out /tmp/pool.jsonl   # about 35 s
+cmp results/pool.jsonl /tmp/pool.jsonl                                        # identical to the committed results
+```
+
+The runtime measurements (sections 1 to 6) need the setup under Reproduce. CI (`.github/workflows/ci.yml`) runs gofmt, `go mod tidy -diff`, `go vet`, `go test -race`, the simulation check above, a 3-repetition cold-start run with real runc (no gVisor on the runner), and golangci-lint on every pull request.
 
 ## Reproduce
 

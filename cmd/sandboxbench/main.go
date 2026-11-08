@@ -17,6 +17,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"sort"
 	"strings"
 	"time"
 
@@ -52,7 +53,9 @@ func main() {
 		os.Exit(2)
 	}
 	cmd := os.Args[1]
-	fs.Parse(os.Args[2:])
+	if err := fs.Parse(os.Args[2:]); err != nil {
+		log.Fatal(err)
+	}
 	c, err := filepath.Abs(*corpus)
 	if err != nil {
 		log.Fatal(err)
@@ -62,11 +65,11 @@ func main() {
 	aa := rt.Runc(*runcBin, filepath.Join(*state, "runc-aa"))
 	aa.Name = "runc-aa"
 	b.arms = []rt.Runtime{runc, aa, rt.Runsc(*runscBin, filepath.Join(*state, "runsc"))}
-	for _, a := range b.arms {
-		os.MkdirAll(a.Root, 0o755)
+	for _, d := range []string{b.arms[0].Root, b.arms[1].Root, b.arms[2].Root, *workDir, *outDir} {
+		if err := os.MkdirAll(d, 0o755); err != nil {
+			log.Fatal(err)
+		}
 	}
-	os.MkdirAll(*workDir, 0o755)
-	os.MkdirAll(*outDir, 0o755)
 	run := map[string]func() (any, error){
 		"coldstart": func() (any, error) { return b.coldstart(pick(*reps, 40)) },
 		"exec":      func() (any, error) { return b.execLatency(pick(*reps, 100)) },
@@ -91,7 +94,11 @@ func main() {
 			log.Fatalf("%s: %v", n, err)
 		}
 		out := map[string]any{"experiment": n, "env": environment(b.arms), "elapsed_sec": time.Since(t).Seconds(), "result": res}
-		bb, _ := json.MarshalIndent(out, "", "  ")
+		bb, err := json.MarshalIndent(out, "", "  ")
+		if err != nil {
+			// never lose a finished experiment to an encoding error silently
+			log.Fatalf("%s: encode results: %v", n, err)
+		}
 		if err := os.WriteFile(filepath.Join(*outDir, n+".json"), bb, 0o644); err != nil {
 			log.Fatal(err)
 		}
@@ -204,7 +211,10 @@ func (b *bench) coldstart(n int) (any, error) {
 	// warm-up: first runs pay for page-cache misses on the runtime binaries
 	for _, a := range b.arms {
 		if s, _, _, err := b.start(ctx, a, false, 0, 0); err == nil {
-			s.sh(ctx, "true")
+			if _, err := s.sh(ctx, "true"); err != nil {
+				s.stop()
+				return nil, fmt.Errorf("warm-up %s: %w", a.Name, err)
+			}
 			s.stop()
 		} else {
 			return nil, err
@@ -285,7 +295,9 @@ func (b *bench) execLatency(n int) (any, error) {
 		}
 		boxes = append(boxes, s)
 		R[a.Name] = &res{}
-		s.r.Exec(ctx, s.id, nil, "", "/bin/true")
+		if _, err := s.r.Exec(ctx, s.id, nil, "", "/bin/true"); err != nil { // warm-up
+			return nil, fmt.Errorf("warm-up exec %s: %w", a.Name, err)
+		}
 	}
 	defer func() {
 		for _, s := range boxes {
@@ -373,7 +385,12 @@ func (b *bench) workloads(n int) (any, error) {
 					var m struct {
 						Ns float64 `json:"ns_per_op"`
 					}
-					json.Unmarshal([]byte(strings.TrimSpace(e.Stdout)), &m)
+					// A micro-benchmark that printed no ns_per_op is a failed
+					// rep; recording 0 ns would pull the median down.
+					if err := json.Unmarshal([]byte(strings.TrimSpace(e.Stdout)), &m); (err != nil || m.Ns <= 0) && e.Code == 0 {
+						e.Code, smp.Code = -1, -1
+						smp.Tail = "no ns_per_op in output: " + smp.Tail
+					}
 					smp.NsPerOp = m.Ns
 				}
 				if e.Code != 0 {
@@ -397,10 +414,15 @@ type taskSummary struct {
 	AAOverRun stats.Ratio              `json:"runc_aa_over_runc"`
 }
 
+// summarizeWork summarises each task per arm and computes runsc/runc and the
+// A/A runc-aa/runc ratios. Ratios are paired by repetition (rep i of both
+// arms ran back to back) over the reps where both arms succeeded. The old
+// code paired by index whenever the arms had equally many successes, which
+// mismatches reps if different reps failed in different arms.
 func summarizeWork(tasks []work.Task, samples []Sample) []taskSummary {
 	var out []taskSummary
 	for i, t := range tasks {
-		v := map[string][]float64{}
+		byRep := map[string]map[int]float64{}
 		fail := map[string]int{}
 		for _, s := range samples {
 			if s.Task != t.Name {
@@ -414,25 +436,56 @@ func summarizeWork(tasks []work.Task, samples []Sample) []taskSummary {
 			if t.Kind == "micro" {
 				x = s.NsPerOp
 			}
-			v[s.Arm] = append(v[s.Arm], x)
+			if byRep[s.Arm] == nil {
+				byRep[s.Arm] = map[int]float64{}
+			}
+			byRep[s.Arm][s.Rep] = x
 		}
 		ts := taskSummary{Task: t.Name, Kind: t.Kind, Metric: "wall_sec", ByArm: map[string]stats.Summary{}, Failures: fail}
 		if t.Kind == "micro" {
 			ts.Metric = "ns_per_op"
 		}
-		for a, x := range v {
-			ts.ByArm[a] = stats.Summarize(x)
+		for a, m := range byRep {
+			ts.ByArm[a] = stats.Summarize(inRepOrder(m, nil))
 		}
-		paired := len(v["runc"]) == len(v["runsc"]) && len(v["runc"]) == len(v["runc-aa"])
-		if len(v["runc"]) > 1 && len(v["runsc"]) > 1 {
-			ts.RunscRunc = stats.MedianRatio(v["runc"], v["runsc"], paired, uint64(10+i))
+		if a, b := pairedByRep(byRep["runc"], byRep["runsc"]); len(a) > 1 {
+			ts.RunscRunc = stats.MedianRatio(a, b, true, uint64(10+i))
 		}
-		if len(v["runc"]) > 1 && len(v["runc-aa"]) > 1 {
-			ts.AAOverRun = stats.MedianRatio(v["runc"], v["runc-aa"], paired, uint64(100+i))
+		if a, b := pairedByRep(byRep["runc"], byRep["runc-aa"]); len(a) > 1 {
+			ts.AAOverRun = stats.MedianRatio(a, b, true, uint64(100+i))
 		}
 		out = append(out, ts)
 	}
 	return out
+}
+
+// inRepOrder returns m's values sorted by rep, keeping only reps in keep
+// (all reps when keep is nil).
+func inRepOrder(m map[int]float64, keep map[int]bool) []float64 {
+	reps := make([]int, 0, len(m))
+	for r := range m {
+		if keep == nil || keep[r] {
+			reps = append(reps, r)
+		}
+	}
+	sort.Ints(reps)
+	out := make([]float64, len(reps))
+	for i, r := range reps {
+		out[i] = m[r]
+	}
+	return out
+}
+
+// pairedByRep returns the two arms' values for the reps both completed, in
+// rep order, so index i is the same rep in both.
+func pairedByRep(a, b map[int]float64) ([]float64, []float64) {
+	both := map[int]bool{}
+	for r := range a {
+		if _, ok := b[r]; ok {
+			both[r] = true
+		}
+	}
+	return inRepOrder(a, both), inRepOrder(b, both)
 }
 
 func tail(s string, n int) string {
@@ -450,7 +503,9 @@ func meminfo(key string) int64 {
 	for _, l := range strings.Split(string(b), "\n") {
 		if strings.HasPrefix(l, key+":") {
 			var v int64
-			fmt.Sscan(strings.TrimSpace(strings.TrimPrefix(l, key+":")), &v)
+			if _, err := fmt.Sscan(strings.TrimSpace(strings.TrimPrefix(l, key+":")), &v); err != nil {
+				return 0
+			}
 			return v * 1024
 		}
 	}
@@ -465,16 +520,24 @@ func pss(pid int) int64 {
 	for _, l := range strings.Split(string(b), "\n") {
 		if strings.HasPrefix(l, "Pss:") {
 			var v int64
-			fmt.Sscan(strings.TrimSpace(strings.TrimPrefix(l, "Pss:")), &v)
+			if _, err := fmt.Sscan(strings.TrimSpace(strings.TrimPrefix(l, "Pss:")), &v); err != nil {
+				return 0
+			}
 			return v * 1024
 		}
 	}
 	return 0
 }
 
+// dropCaches is best effort (it needs root); a failure is logged because
+// the MemAvailable deltas are noisier without it.
 func dropCaches() {
-	exec.Command("sync").Run()
-	os.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0o200)
+	if err := exec.Command("sync").Run(); err != nil {
+		log.Printf("   sync: %v", err)
+	}
+	if err := os.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0o200); err != nil {
+		log.Printf("   drop_caches: %v (MemAvailable deltas will be noisier)", err)
+	}
 	time.Sleep(500 * time.Millisecond)
 }
 
